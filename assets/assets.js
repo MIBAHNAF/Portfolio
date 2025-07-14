@@ -35,6 +35,19 @@ import right_arrow from './right-arrow.png';
 import send_icon from './send-icon.png';
 import right_arrow_bold from './right-arrow-bold.png';
 import right_arrow_bold_dark from './right-arrow-bold-dark.png';
+import aws from './aws.png';
+import azure from './azure.png';
+import bash from './bash.png';
+import boot from './boot.png'; // Bootstrap
+import excel from './excel.png';
+import gcp from './gcp.png';
+import Jupyter from './Jupyter.png';
+import jquery from './jquery.png';
+import lang from './lang.png'; // Langchain
+import lucid from './lucid.png'; // Lucidcharts
+import scikit from './scikit.png'; // Scikit-learn
+import supa from './supa.png'; // Supabase
+import umass_logo from './umass.png';
 
 export const assets = {
     user_image,
@@ -73,7 +86,20 @@ export const assets = {
     right_arrow,
     send_icon,
     right_arrow_bold,
-    right_arrow_bold_dark
+    right_arrow_bold_dark,
+    aws,
+    azure,
+    bash,
+    boot,
+    excel,
+    gcp,
+    Jupyter,
+    jquery,
+    lang,
+    lucid,
+    scikit,
+    supa,
+    umass_logo,
 };
 
 export const workData = [
@@ -107,11 +133,33 @@ export const serviceData = [
 ]
 
 export const infoList = [
-    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML, CSS, JavaScript React Js, Next Js' },
-    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'B.Tech in Computer Science' },
-    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 5 projects' }
+    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'Python, JavaScript, Java, SQL, VBA, C' },
+    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'Computer Science,BS UMass Boston ' },
+    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: '3+ Real World Projects' }
 ];
 
 export const toolsData = [
     assets.vscode, assets.firebase, assets.mongodb, assets.figma, assets.git
+];
+
+export const softwareData = [
+    { icon: assets.excel, title: 'Excel' },
+    { icon: assets.lucid, title: 'Lucidcharts' },
+    { icon: assets.aws, title: 'AWS' },
+    { icon: assets.gcp, title: 'GCP' },
+    { icon: assets.lang, title: 'Langchain' },
+    { icon: assets.Jupyter, title: 'Jupyter Notebook' },
+    { icon: assets.git, title: 'Git' },
+    { icon: assets.bash, title: 'Bash' },
+    { icon: assets.azure, title: 'MS Azure' }
+];
+
+export const frameworkData = [
+    { icon: assets.scikit, title: 'Scikit-learn' },
+    { icon: assets.jquery, title: 'jQuery' },
+    { icon: assets.firebase, title: 'Firebase' },
+    { icon: assets.react, title: 'React' },
+    { icon: assets.next, title: 'Next.js' },
+    { icon: assets.supa, title: 'Supabase' },
+    { icon: assets.boot, title: 'Bootstrap' }
 ];
