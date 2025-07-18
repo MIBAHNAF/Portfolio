@@ -51,7 +51,7 @@ import umass_logo from './umass.png';
 import python from './python.png';
 import js from './js.png';
 import unity from './unity.png';
-import react from './React.png';
+import react from './react.png';
 import csharp from './csharp.png';
 import cpp from './c++.png';
 import ts from './ts.png';
