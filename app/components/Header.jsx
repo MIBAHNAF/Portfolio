@@ -4,8 +4,7 @@ import { assets } from '../../assets/assets'
 
 function Header() {
   return (
-    <div className='w-11/12 max-w-3xl text-center mx-auto h-screen
-     flex flex-col items-center justify-center gap-4'>
+    <div className='w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4 pt-20 sm:pt-24 lg:pt-0'>
       <div>
         <Image src ={assets.profile_img} alt= ''
         className='rounded-full w-32'/>
@@ -21,15 +20,13 @@ function Header() {
         </p>
         <div className='flex flex-col sm:flex-row gap-4 mt-4'>
             <a href = "#contact" 
-            className='px-10 py-3 border border-white rounded-full bg-black text-white 
-            flex items-center gap-2'
+            className='px-10 py-3 border border-white rounded-full bg-black text-white flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-md'
             > contact me <Image src = {assets.right_arrow_white} alt='' className='w-4'/></a>
             <a href = "/SWE_Resume.pdf" download 
-            className='px-10 py-3 border rounded-full border-gray-500 flex
-            items-center gap-2'
+            className='px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-md'
             > SWE Resume <Image src = {assets.download_icon} alt='' className='w-4'/></a>
-            <a href = "/IT_Specialist Resume.pdf" download className='px-10 py-3 border rounded-full border-gray-500 flex
-            items-center gap-2'
+            <a href = "/IT_Specialist Resume.pdf" download 
+            className='px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-md'
             > IT Resume <Image src = {assets.download_icon} alt='' className='w-4'/></a>
         </div>
       

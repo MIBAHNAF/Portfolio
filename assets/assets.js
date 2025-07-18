@@ -48,6 +48,17 @@ import lucid from './lucid.png'; // Lucidcharts
 import scikit from './scikit.png'; // Scikit-learn
 import supa from './supa.png'; // Supabase
 import umass_logo from './umass.png';
+import python from './python.png';
+import js from './js.png';
+import unity from './unity.png';
+import react from './React.png';
+import csharp from './csharp.png';
+import cpp from './c++.png';
+import ts from './ts.png';
+import css from './css.png';
+import next from './next.png';
+import docker from './docker.png';
+import kubernetes from './kubernetes.png';
 
 export const assets = {
     user_image,
@@ -100,6 +111,17 @@ export const assets = {
     scikit,
     supa,
     umass_logo,
+    python,
+    js,
+    unity,
+    csharp,
+    cpp,
+    ts,
+    css,
+    react,
+    next,
+    docker,
+    kubernetes,
 };
 
 export const workData = [
@@ -138,28 +160,61 @@ export const infoList = [
     { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: '3+ Real World Projects' }
 ];
 
-export const toolsData = [
-    assets.vscode, assets.firebase, assets.mongodb, assets.figma, assets.git
-];
 
 export const softwareData = [
-    { icon: assets.excel, title: 'Excel' },
-    { icon: assets.lucid, title: 'Lucidcharts' },
+    { icon: assets.docker, title: 'Docker' },
+    { icon: assets.kubernetes, title: 'Kubernetes' },
     { icon: assets.aws, title: 'AWS' },
     { icon: assets.gcp, title: 'GCP' },
+    { icon: assets.azure, title: 'MS Azure' },
     { icon: assets.lang, title: 'Langchain' },
     { icon: assets.Jupyter, title: 'Jupyter Notebook' },
     { icon: assets.git, title: 'Git' },
     { icon: assets.bash, title: 'Bash' },
-    { icon: assets.azure, title: 'MS Azure' }
+    
 ];
 
 export const frameworkData = [
     { icon: assets.scikit, title: 'Scikit-learn' },
-    { icon: assets.jquery, title: 'jQuery' },
+    { icon: assets.supa, title: 'Supabase' },
     { icon: assets.firebase, title: 'Firebase' },
+    { icon: assets.mongodb, title: 'MongoDB' },
+    { icon: assets.jquery, title: 'jQuery' },
     { icon: assets.react, title: 'React' },
     { icon: assets.next, title: 'Next.js' },
-    { icon: assets.supa, title: 'Supabase' },
+    
     { icon: assets.boot, title: 'Bootstrap' }
+];
+
+export const projectsData = [
+  {
+    name: 'Attendance SMS System',
+    type: 'Client Project',
+    hours: 60,
+    languages: ['ts', 'js', 'css'],
+  },
+  {
+    name: 'Movie Recommendation App',
+    type: 'Personal Project',
+    hours: 30,
+    languages: ['python'],
+  },
+  {
+    name: 'Portfolio Website',
+    type: 'Personal Project',
+    hours: 70,
+    languages: ['js', 'css'],
+  },
+  {
+    name: 'NFC Apple Pay Attendance System',
+    type: 'Course Project',
+    hours: 40,
+    languages: ['python', 'cpp'],
+  },
+  {
+    name: 'Hallucinations Horror Game',
+    type: 'Course Project',
+    hours: 80,
+    languages: ['unity', 'csharp'],
+  },
 ];
