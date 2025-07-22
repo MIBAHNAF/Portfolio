@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 // Experience data
 const experiences = [
@@ -53,11 +53,14 @@ const experiences = [
   },
 ]
 
-const ExperienceCard = ({ data, isRight }) => (
-  <div className={`bg-transparent ${isRight ? 'pl-8' : 'pr-8'} group cursor-pointer transition-all duration-300`}>
-    <p className='text-sm font-semibold text-slate-600 group-hover:text-blue-500 transition-colors duration-300'>{data.period}</p>
+const ExperienceCard = ({ data, isRight, isActive, onToggle }) => (
+  <div 
+    className={`bg-transparent ${isRight ? 'pl-8' : 'pr-8'} group cursor-pointer transition-all duration-300`}
+    onClick={onToggle}
+  >
+    <p className={`text-sm font-semibold transition-colors duration-300 ${isActive ? 'text-blue-500' : 'text-slate-600 group-hover:text-blue-500'}`}>{data.period}</p>
     <h3 className='text-2xl font-bold mt-1 font-Ovo'>{data.company}</h3>
-    <p className='text-lg font-medium italic font-Ovo group-hover:text-blue-500 transition-colors duration-300'>{data.role}</p>
+    <p className={`text-lg font-medium italic font-Ovo transition-colors duration-300 ${isActive ? 'text-blue-500' : 'group-hover:text-blue-500'}`}>{data.role}</p>
     <p className='text-gray-500 mb-4'>{data.location}</p>
     <ul className='list-none space-y-2 text-gray-600'>
       {data.points.map((point, idx) => (
@@ -68,6 +71,12 @@ const ExperienceCard = ({ data, isRight }) => (
 )
 
 function Experiences() {
+  const [activeExperience, setActiveExperience] = useState(null);
+
+  const toggleExperience = (index) => {
+    setActiveExperience(activeExperience === index ? null : index);
+  };
+
   return (
     <div id='experiences' className='w-full px-[12%] py-10 scroll-mt-20'>
       <h4 className='text-center mb-2 text-lg font-Ovo'>My Journey</h4>
@@ -82,14 +91,19 @@ function Experiences() {
           <div key={idx} className='relative flex mb-16 group'>
             {/* Dot */}
             <div className='absolute left-[31px] lg:left-[calc(50%-9px)] z-10'>
-              <span className='block w-[20px] h-[20px] rounded-full bg-slate-600 group-hover:bg-blue-500 transition-colors duration-300'></span>
+              <span className={`block w-[20px] h-[20px] rounded-full transition-colors duration-300 ${activeExperience === idx ? 'bg-blue-500' : 'bg-slate-600 group-hover:bg-blue-500'}`}></span>
             </div>
 
             {/* Content */}
             <div className='flex-grow pl-[80px] lg:pl-0'>
               <div className='lg:grid lg:grid-cols-2 gap-8'>
                 <div className={idx % 2 === 0 ? 'lg:text-right' : 'lg:col-start-2'}>
-                  <ExperienceCard data={exp} isRight={idx % 2 !== 0} />
+                  <ExperienceCard 
+                    data={exp} 
+                    isRight={idx % 2 !== 0} 
+                    isActive={activeExperience === idx}
+                    onToggle={() => toggleExperience(idx)}
+                  />
                 </div>
               </div>
             </div>

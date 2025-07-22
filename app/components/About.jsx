@@ -16,6 +16,24 @@ function About() {
   const [popoverOpen, setPopoverOpen] = useState(false);
   const langCardRef = useRef(null);
   const [openPopover, setOpenPopover] = useState(null);
+  const [touchOpenPopover, setTouchOpenPopover] = useState(null);
+  const [clickedItem, setClickedItem] = useState(null);
+
+  const handlePopoverToggle = (popoverName) => {
+    setTouchOpenPopover(touchOpenPopover === popoverName ? null : popoverName);
+  };
+
+  const isPopoverOpen = (popoverName) => {
+    return touchOpenPopover === popoverName || openPopover === popoverName;
+  };
+
+  const handleItemClick = (itemName) => {
+    setClickedItem(clickedItem === itemName ? null : itemName);
+    // Auto-hide after 2 seconds
+    if (clickedItem !== itemName) {
+      setTimeout(() => setClickedItem(null), 2000);
+    }
+  };
 
   return (
     <div id='about' className='w-full px-4 sm:px-6 md:px-8 lg:px-[12%] py-10 scroll-mt-20'>
@@ -40,10 +58,11 @@ function About() {
                 return (
                   <li
                     key={index}
-                    className={`relative border-[0.5px] border-gray-400 rounded-xl p-4 sm:p-6 cursor-pointer transition-all duration-500 hover:scale-105 h-full ${popoverOpen ? 'z-[99999] md:z-30' : 'z-30'}`}
+                    className={`relative border-[0.5px] border-gray-400 rounded-xl p-4 sm:p-6 cursor-pointer transition-all duration-500 hover:scale-105 h-full ${(popoverOpen || touchOpenPopover === 'Languages') ? 'z-[99999] md:z-30' : 'z-30'}`}
                     ref={langCardRef}
-                    onMouseEnter={() => setPopoverOpen(true)}
-                    onMouseLeave={() => setPopoverOpen(false)}
+                    onMouseEnter={() => window.innerWidth >= 1024 && setPopoverOpen(true)}
+                    onMouseLeave={() => window.innerWidth >= 1024 && setPopoverOpen(false)}
+                    onClick={() => handlePopoverToggle('Languages')}
                   >
                     {/* Collapsed (default) state */}
                     <div>
@@ -53,7 +72,7 @@ function About() {
                     </div>
 
                     {/* Popover for detailed info */}
-                    {popoverOpen && (
+                    {(popoverOpen || touchOpenPopover === 'Languages') && (
                       <div
                         className="absolute left-1/2 top-full z-[9999] w-72 -translate-x-1/2 mt-4 bg-white lg:bg-white/90 lg:backdrop-blur-lg rounded-xl p-6 shadow-2xl border border-white/20 animate-fade-in"
                         style={{ minWidth: '18rem' }}
@@ -87,9 +106,10 @@ function About() {
                 return (
                   <li
                     key={index}
-                    className={`relative border-[0.5px] border-gray-400 rounded-xl p-4 sm:p-6 cursor-pointer transition-all duration-500 hover:scale-105 h-full ${(openPopover === 'Education') ? 'z-[10000] md:z-30' : 'z-30'}`}
-                    onMouseEnter={() => setOpenPopover('Education')}
-                    onMouseLeave={() => setOpenPopover(null)}
+                    className={`relative border-[0.5px] border-gray-400 rounded-xl p-4 sm:p-6 cursor-pointer transition-all duration-500 hover:scale-105 h-full ${isPopoverOpen('Education') ? 'z-[10000] md:z-30' : 'z-30'}`}
+                    onMouseEnter={() => window.innerWidth >= 1024 && setOpenPopover('Education')}
+                    onMouseLeave={() => window.innerWidth >= 1024 && setOpenPopover(null)}
+                    onClick={() => handlePopoverToggle('Education')}
                   >
                     {/* Collapsed (default) state */}
                     <div>
@@ -98,7 +118,7 @@ function About() {
                       <p className='text-xs sm:text-sm'>{description}</p>
                     </div>
                     {/* Popover for Education */}
-                    {openPopover === 'Education' && (
+                    {isPopoverOpen('Education') && (
                       <div className="absolute left-1/2 top-full z-[9999] w-80 -translate-x-1/2 mt-4 bg-white lg:bg-white/90 lg:backdrop-blur-lg rounded-xl p-6 shadow-2xl border border-white/20 animate-fade-in flex flex-col items-center text-center">
                         <Image src={assets.umass_logo} alt='UMass Boston Logo' className='w-16 mb-4' />
                         <h3 className='text-xl font-bold font-Ovo mb-2 text-gray-700'>{title}</h3>
@@ -125,9 +145,10 @@ function About() {
                 return (
                   <li
                     key={index}
-                    className={`relative border-[0.5px] border-gray-400 rounded-xl p-4 sm:p-6 cursor-pointer transition-all duration-500 hover:scale-105 h-full ${(openPopover === 'Projects') ? 'z-[9999] md:z-30' : 'z-30'}`}
-                    onMouseEnter={() => setOpenPopover('Projects')}
-                    onMouseLeave={() => setOpenPopover(null)}
+                    className={`relative border-[0.5px] border-gray-400 rounded-xl p-4 sm:p-6 cursor-pointer transition-all duration-500 hover:scale-105 h-full ${isPopoverOpen('Projects') ? 'z-[9999] md:z-30' : 'z-30'}`}
+                    onMouseEnter={() => window.innerWidth >= 1024 && setOpenPopover('Projects')}
+                    onMouseLeave={() => window.innerWidth >= 1024 && setOpenPopover(null)}
+                    onClick={() => handlePopoverToggle('Projects')}
                   >
                     {/* Collapsed (default) state */}
                     <div>
@@ -136,7 +157,7 @@ function About() {
                       <p className='text-xs sm:text-sm'>{description}</p>
                     </div>
                     {/* Popover for Projects */}
-                    {openPopover === 'Projects' && (
+                    {isPopoverOpen('Projects') && (
                       <div className="absolute left-1/2 top-full z-[9999] w-96 -translate-x-1/2 mt-4 bg-white lg:bg-white/90 lg:backdrop-blur-lg rounded-xl p-6 shadow-2xl border border-white/20 animate-fade-in">
                         <h3 className='text-2xl font-bold mb-4 text-center font-Ovo text-gray-700'>Projects</h3>
                         <ul className='space-y-3'>
@@ -194,9 +215,12 @@ function About() {
                 <li
                   key={index}
                   className='relative flex items-center justify-center w-10 sm:w-12 md:w-14 aspect-square border border-gray-400 rounded-lg cursor-pointer hover:-translate-y-1 duration-500 group'
+                  onClick={() => handleItemClick(`software-${index}`)}
                 >
                   <Image src={software.icon} alt={software.title} className='w-4 sm:w-5 md:w-7 z-[-10]' />
-                  <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-gray-800 text-white text-xs opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-10 transition-opacity duration-200">
+                  <span className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-gray-800 text-white text-xs whitespace-nowrap z-10 transition-opacity duration-200 pointer-events-none ${
+                    clickedItem === `software-${index}` ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                  }`}>
                     {software.title}
                   </span>
                 </li>
@@ -208,9 +232,12 @@ function About() {
                 <li
                   key={index}
                   className='relative flex items-center justify-center w-10 sm:w-12 md:w-14 aspect-square border border-gray-400 rounded-lg cursor-pointer hover:-translate-y-1 duration-500 group'
+                  onClick={() => handleItemClick(`framework-${index}`)}
                 >
                   <Image src={framework.icon} alt={framework.title} className='w-4 sm:w-5 md:w-7 z-[-10]' />
-                  <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-gray-800 text-white text-xs opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-10 transition-opacity duration-200">
+                  <span className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-gray-800 text-white text-xs whitespace-nowrap z-10 transition-opacity duration-200 pointer-events-none ${
+                    clickedItem === `framework-${index}` ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                  }`}>
                     {framework.title}
                   </span>
                 </li>
