@@ -93,7 +93,7 @@ function Academics() {
         {/* Section 2: Computer Science & Related Courses */}
         <div className='bg-white rounded-lg sm:rounded-xl shadow-lg p-3 sm:p-4 md:p-6 lg:p-8 border border-gray-100'>
           <h3 className='text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-3 sm:mb-4 md:mb-6 text-center'>
-            💻 Computer Science & Related Coursework
+             Computer Science & Related Coursework
           </h3>
           
           <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4'>
