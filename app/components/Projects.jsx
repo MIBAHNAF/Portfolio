@@ -338,7 +338,7 @@ function Projects() {
       content: (
         <div>
           <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-lg font-sans mb-8">
-            Hallucinations is a psychological horror game where reality blurs and survival depends on your mind. Built in Unity (URP) with C# scripting, custom Timeline cutscenes, Canvas UI, and ChatGPT-generated voice lines. Features scripted entity behavior, level transitions, and immersive horror design.
+            Hallucinations is a psychological horror game where reality blurs and survival depends on your mind. Built in Unity (URP) with C# scripting, custom Timeline cutscenes, Canvas UI, and ChatGPT-generated voice lines. Features scripted entity behavior, level transitions, and immersive horror design(~80 hours development time).
           </p>
           
           <div className="mb-8">
@@ -415,7 +415,7 @@ function Projects() {
       content: (
         <div>
           <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-lg font-sans mb-8">
-            This very portfolio website you're viewing! Built with modern web technologies including Next.js, React, Tailwind CSS, and Framer Motion. Features responsive design, dark mode support, smooth animations, and an interactive project carousel using Aceternity UI components.
+            This very portfolio website you're viewing! Built with modern web technologies including Next.js, React, Tailwind CSS, and Framer Motion. Features responsive design, dark mode support, smooth animations, and an interactive project carousel using Aceternity UI components (~70 hours development time).
           </p>
           
           <div className="mb-8">
