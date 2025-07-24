@@ -189,36 +189,38 @@ export const Card = ({
     <>
       <AnimatePresence>
         {open && (
-          <div className="fixed inset-0 z-50 h-screen overflow-auto">
+          <div className="fixed inset-0 z-50 overflow-y-auto">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 h-full w-full bg-black/80 backdrop-blur-lg" />
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              ref={containerRef}
-              layoutId={layout ? `card-${card.title}` : undefined}
-              className="relative z-[60] mx-auto my-4 sm:my-10 h-fit max-w-5xl rounded-3xl bg-white p-3 sm:p-4 font-sans md:p-10 dark:bg-neutral-900">
-              <button
-                className="sticky top-2 sm:top-4 right-0 ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-black dark:bg-white"
-                onClick={handleClose}>
-                <IconX className="h-5 w-5 sm:h-6 sm:w-6 text-neutral-100 dark:text-neutral-900" />
-              </button>
-              <motion.p
-                layoutId={layout ? `category-${card.title}` : undefined}
-                className="text-sm sm:text-base font-medium text-black dark:text-white">
-                {card.category}
-              </motion.p>
-              <motion.p
-                layoutId={layout ? `title-${card.title}` : undefined}
-                className="mt-2 sm:mt-4 text-xl sm:text-2xl font-semibold text-neutral-700 md:text-5xl dark:text-white">
-                {card.title}
-              </motion.p>
-              <div className="py-4 sm:py-6 md:py-10">{card.content}</div>
-            </motion.div>
+              className="fixed inset-0 bg-black/80 backdrop-blur-lg" />
+            <div className="min-h-screen px-4 py-6 sm:px-6 sm:py-8 md:py-12 flex items-center justify-center">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                ref={containerRef}
+                layoutId={layout ? `card-${card.title}` : undefined}
+                className="relative z-[60] w-full max-w-5xl rounded-3xl bg-white p-4 sm:p-6 font-sans md:p-10 dark:bg-neutral-900 max-h-[90vh] overflow-y-auto">
+                <button
+                  className="sticky top-2 sm:top-4 right-0 ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-black dark:bg-white z-10"
+                  onClick={handleClose}>
+                  <IconX className="h-5 w-5 sm:h-6 sm:w-6 text-neutral-100 dark:text-neutral-900" />
+                </button>
+                <motion.p
+                  layoutId={layout ? `category-${card.title}` : undefined}
+                  className="text-sm sm:text-base font-medium text-black dark:text-white">
+                  {card.category}
+                </motion.p>
+                <motion.p
+                  layoutId={layout ? `title-${card.title}` : undefined}
+                  className="mt-2 sm:mt-4 text-xl sm:text-2xl font-semibold text-neutral-700 md:text-5xl dark:text-white">
+                  {card.title}
+                </motion.p>
+                <div className="py-4 sm:py-6 md:py-10">{card.content}</div>
+              </motion.div>
+            </div>
           </div>
         )}
       </AnimatePresence>
