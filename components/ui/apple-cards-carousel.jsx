@@ -229,16 +229,16 @@ export const Card = ({
         onClick={handleOpen}
         className="relative z-10 flex h-72 w-52 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 sm:h-80 sm:w-56 md:h-[40rem] md:w-96 dark:bg-neutral-900">
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
+          className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/70 via-black/20 to-transparent" />
         <div className="relative z-40 p-4 sm:p-6 md:p-8">
           <motion.p
             layoutId={layout ? `category-${card.category}` : undefined}
-            className="text-left font-sans text-xs sm:text-sm font-medium text-white md:text-base">
+            className="text-left font-sans text-xs sm:text-sm font-medium text-white md:text-base drop-shadow-lg">
             {card.category}
           </motion.p>
           <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
-            className="mt-2 max-w-xs text-left font-sans text-lg sm:text-xl font-semibold [text-wrap:balance] text-white md:text-3xl">
+            className="mt-2 max-w-xs text-left font-sans text-lg sm:text-xl font-semibold [text-wrap:balance] text-white md:text-3xl drop-shadow-lg">
             {card.title}
           </motion.p>
         </div>
