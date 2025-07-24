@@ -1,5 +1,6 @@
 import { Outfit, Ovo } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 const outfit =Outfit({
   subsets: ["latin"], weight: ["400", "500", "600", "700"],
@@ -21,7 +22,11 @@ export default function RootLayout({ children }) {
         className={`${outfit.className} ${ovo.className} antialiased leading-8
           overflow-x-hidden`}
       >
-        {children}
+        <ThemeProvider>
+          <div className="min-h-screen transition-colors duration-300">
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

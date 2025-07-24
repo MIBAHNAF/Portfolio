@@ -1,8 +1,16 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { assets } from '../../assets/assets'
+import { useTheme } from '../contexts/ThemeContext'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 function Contact() {
+  const { isDark } = useTheme()
+  
+  // Animation refs and hooks
+  const [titleRef, titleInView] = useScrollAnimation();
+  const [formRef, formInView] = useScrollAnimation();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -54,25 +62,33 @@ function Contact() {
   return (
     <div 
       id='contact' 
-      className='w-full px-3 sm:px-6 md:px-8 lg:px-[12%] py-8 sm:py-10 scroll-mt-20 relative'
-      style={{
+      className={`w-full px-3 sm:px-6 md:px-8 lg:px-[12%] py-8 sm:py-10 scroll-mt-20 relative ${isDark ? 'bg-black' : ''}`}
+      style={isDark ? {} : {
         backgroundImage: 'url(/footer-bg-color.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
       }}
     >
-      {/* Lighter overlay for better blending */}
-      <div className="absolute inset-0 bg-white/20"></div>
+      {/* Overlay only for light mode */}
+      {!isDark && <div className="absolute inset-0 bg-white/20"></div>}
       
       <div className="relative z-10">
-        <h4 className='text-center mb-2 text-sm sm:text-base md:text-lg font-Ovo text-gray-600'>Connect with me</h4>
-        <h2 className='text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-Ovo mb-6 sm:mb-8 md:mb-12 lg:mb-20 text-gray-800'>
-          Get in touch
-        </h2>
+        <div 
+          ref={titleRef}
+          className={`text-center transition-all duration-1000 ${titleInView ? 'fadeInUp' : 'opacity-0 translate-y-8'}`}
+        >
+          <h4 className={`mb-2 text-sm sm:text-base md:text-lg font-Ovo ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Connect with me</h4>
+          <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-Ovo mb-6 sm:mb-8 md:mb-12 lg:mb-20 ${isDark ? 'text-white' : 'text-gray-800'}`}>
+            Get in touch
+          </h2>
+        </div>
         
-        <div className='max-w-4xl mx-auto'>
-          <p className='text-center text-gray-600 font-Ovo mb-6 sm:mb-8 md:mb-12 text-xs sm:text-sm md:text-base max-w-2xl mx-auto px-2'>
+        <div 
+          ref={formRef}
+          className={`max-w-4xl mx-auto transition-all duration-1000 delay-300 ${formInView ? 'slideInUp' : 'opacity-0 translate-y-8'}`}
+        >
+          <p className={`text-center font-Ovo mb-6 sm:mb-8 md:mb-12 text-xs sm:text-sm md:text-base max-w-2xl mx-auto px-2 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
             I'd love to hear from you! If you have any questions, comments, or feedback, please use the form below.
           </p>
           
@@ -87,7 +103,11 @@ function Contact() {
                   onChange={handleChange}
                   placeholder="Enter your name"
                   required
-                  className='w-full px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/60 backdrop-blur-sm text-gray-800 placeholder-gray-500 text-xs sm:text-sm md:text-base'
+                  className={`w-full px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm md:text-base ${
+                    isDark 
+                      ? 'bg-gray-800 border-gray-600 text-white placeholder-gray-400' 
+                      : 'bg-white/60 backdrop-blur-sm border-gray-200 text-gray-800 placeholder-gray-500'
+                  }`}
                 />
               </div>
               <div>
@@ -98,7 +118,11 @@ function Contact() {
                   onChange={handleChange}
                   placeholder="Enter your email"
                   required
-                  className='w-full px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/60 backdrop-blur-sm text-gray-800 placeholder-gray-500 text-xs sm:text-sm md:text-base'
+                  className={`w-full px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm md:text-base ${
+                    isDark 
+                      ? 'bg-gray-800 border-gray-600 text-white placeholder-gray-400' 
+                      : 'bg-white/60 backdrop-blur-sm border-gray-200 text-gray-800 placeholder-gray-500'
+                  }`}
                 />
               </div>
             </div>
@@ -112,7 +136,11 @@ function Contact() {
                 placeholder="Enter your message"
                 required
                 rows={5}
-                className='w-full px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/60 backdrop-blur-sm text-gray-800 placeholder-gray-500 resize-none text-xs sm:text-sm md:text-base'
+                className={`w-full px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-xs sm:text-sm md:text-base ${
+                  isDark 
+                    ? 'bg-gray-800 border-gray-600 text-white placeholder-gray-400' 
+                    : 'bg-white/60 backdrop-blur-sm border-gray-200 text-gray-800 placeholder-gray-500'
+                }`}
               />
             </div>
             
@@ -121,9 +149,11 @@ function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 md:px-12 py-2.5 sm:py-3 md:py-4 bg-gray-800 text-white font-medium rounded-full hover:bg-gray-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-xs sm:text-sm md:text-base ${
-                  isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
-                }`}
+                className={`inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 md:px-12 py-2.5 sm:py-3 md:py-4 font-medium rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-xs sm:text-sm md:text-base ${
+                  isDark 
+                    ? 'bg-gray-700 text-white hover:bg-gray-600' 
+                    : 'bg-gray-800 text-white hover:bg-gray-700'
+                } ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
               >
                 {isSubmitting ? 'Submitting...' : 'Submit now'}
                 {!isSubmitting && (

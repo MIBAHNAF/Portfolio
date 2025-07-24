@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useTheme } from '../contexts/ThemeContext'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 // Experience data
 const experiences = [
@@ -53,16 +55,16 @@ const experiences = [
   },
 ]
 
-const ExperienceCard = ({ data, isRight, isActive, onToggle }) => (
+const ExperienceCard = ({ data, isRight, isActive, onToggle, isDark }) => (
   <div 
     className={`bg-transparent ${isRight ? 'lg:pl-8' : 'lg:pr-8'} group cursor-pointer transition-all duration-300`}
     onClick={onToggle}
   >
-    <p className={`text-xs sm:text-sm font-semibold transition-colors duration-300 ${isActive ? 'text-blue-500' : 'text-slate-600 group-hover:text-blue-500'}`}>{data.period}</p>
-    <h3 className='text-lg sm:text-xl lg:text-2xl font-bold mt-1 font-Ovo'>{data.company}</h3>
-    <p className={`text-base sm:text-lg font-medium italic font-Ovo transition-colors duration-300 ${isActive ? 'text-blue-500' : 'group-hover:text-blue-500'}`}>{data.role}</p>
-    <p className='text-sm sm:text-base text-gray-500 mb-3 sm:mb-4'>{data.location}</p>
-    <ul className='list-none space-y-1.5 sm:space-y-2 text-sm sm:text-base text-gray-600'>
+    <p className={`text-xs sm:text-sm font-semibold transition-colors duration-300 ${isActive ? (isDark ? 'text-orange-500' : 'text-blue-500') : isDark ? 'text-gray-300 group-hover:text-orange-400' : 'text-gray-600 group-hover:text-blue-500'}`}>{data.period}</p>
+    <h3 className={`text-lg sm:text-xl lg:text-2xl font-bold mt-1 font-Ovo ${isDark ? 'text-white' : 'text-gray-900'}`}>{data.company}</h3>
+    <p className={`text-base sm:text-lg font-medium italic font-Ovo transition-colors duration-300 ${isActive ? (isDark ? 'text-orange-500' : 'text-blue-500') : isDark ? 'text-gray-300 group-hover:text-orange-400' : 'text-gray-700 group-hover:text-blue-500'}`}>{data.role}</p>
+    <p className={`text-sm sm:text-base mb-3 sm:mb-4 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{data.location}</p>
+    <ul className={`list-none space-y-1.5 sm:space-y-2 text-sm sm:text-base ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
       {data.points.map((point, idx) => (
         <li key={idx} className="leading-relaxed">{point}</li>
       ))}
@@ -71,7 +73,12 @@ const ExperienceCard = ({ data, isRight, isActive, onToggle }) => (
 )
 
 function Experiences() {
+  const { isDark } = useTheme();
   const [activeExperience, setActiveExperience] = useState(null);
+  
+  // Animation refs and hooks
+  const [titleRef, titleInView] = useScrollAnimation();
+  const [contentRef, contentInView] = useScrollAnimation();
 
   const toggleExperience = (index) => {
     setActiveExperience(activeExperience === index ? null : index);
@@ -79,19 +86,27 @@ function Experiences() {
 
   return (
     <div id='experiences' className='w-full px-4 sm:px-6 md:px-8 lg:px-[12%] py-6 md:py-10 scroll-mt-20'>
-      <h4 className='text-center mb-2 text-base sm:text-lg font-Ovo'>My Journey</h4>
-      <h2 className='text-center text-3xl sm:text-4xl md:text-5xl font-Ovo mb-10 sm:mb-16 md:mb-20'>Work Experience</h2>
+      <div 
+        ref={titleRef}
+        className={`text-center transition-all duration-1000 ${titleInView ? 'fadeInUp' : 'opacity-0 translate-y-8'}`}
+      >
+        <h4 className={`mb-2 text-base sm:text-lg font-Ovo ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>My Journey</h4>
+        <h2 className={`text-3xl sm:text-4xl md:text-5xl font-Ovo mb-10 sm:mb-16 md:mb-20 ${isDark ? 'text-white' : 'text-gray-800'}`}>Work Experience</h2>
+      </div>
 
       {/* Timeline container */}
-      <div className='relative max-w-6xl mx-auto'>
+      <div 
+        ref={contentRef}
+        className={`relative max-w-6xl mx-auto transition-all duration-1000 delay-300 ${contentInView ? 'fadeInUp' : 'opacity-0 translate-y-8'}`}
+      >
         {/* Vertical line */}
-        <div className='absolute left-[20px] sm:left-[30px] lg:left-[50%] top-0 h-full w-[2px] bg-slate-400'></div>
+        <div className={`absolute left-[20px] sm:left-[30px] lg:left-[50%] top-0 h-full w-[2px] ${isDark ? 'bg-gray-600' : 'bg-slate-400'}`}></div>
 
         {experiences.map((exp, idx) => (
           <div key={idx} className='relative flex mb-8 sm:mb-12 lg:mb-16 group'>
             {/* Dot */}
             <div className='absolute left-[11px] sm:left-[21px] lg:left-[calc(50%-9px)] z-10'>
-              <span className={`block w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] rounded-full transition-colors duration-300 ${activeExperience === idx ? 'bg-blue-500' : 'bg-slate-600 group-hover:bg-blue-500'}`}></span>
+              <span className={`block w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] rounded-full transition-colors duration-300 ${activeExperience === idx ? (isDark ? 'bg-orange-500' : 'bg-blue-500') : isDark ? 'bg-gray-600 group-hover:bg-orange-400' : 'bg-slate-600 group-hover:bg-blue-500'}`}></span>
             </div>
 
             {/* Content */}
@@ -103,6 +118,7 @@ function Experiences() {
                     isRight={idx % 2 !== 0} 
                     isActive={activeExperience === idx}
                     onToggle={() => toggleExperience(idx)}
+                    isDark={isDark}
                   />
                 </div>
               </div>
