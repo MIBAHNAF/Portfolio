@@ -60,6 +60,9 @@ import next from './next.png';
 import docker from './docker.png';
 import kubernetes from './kubernetes.png';
 import html from './html.png';
+import user1 from './user-image-1.png';
+import user2 from './user-image-2.png';
+import user3 from './user-image-3.png';
 
 export const assets = {
     user_image,
@@ -124,6 +127,9 @@ export const assets = {
     docker,
     kubernetes,
     html,
+    user1,
+    user2,
+    user3,
 };
 
 export const workData = [

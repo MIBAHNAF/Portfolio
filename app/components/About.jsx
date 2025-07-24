@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { assets, infoList, projectsData, softwareData, frameworkData } from '../../assets/assets';
 
@@ -12,9 +12,46 @@ const languagesDetails = [
   { name: 'C', years: 1, level: 'Beginner', progress: 50 },
 ];
 
+// User images array for rotation
+const userImages = [
+  assets.user_image,
+  assets.user1,
+  assets.user2,
+  assets.user3
+];
+
 function About() {
   const [activePopover, setActivePopover] = useState(null);
   const [clickedItem, setClickedItem] = useState(null);
+  // Start with first image to avoid hydration mismatch
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  // Set random image after hydration to avoid SSR mismatch
+  useEffect(() => {
+    setIsHydrated(true);
+    const randomIndex = Math.floor(Math.random() * userImages.length);
+    setCurrentImageIndex(randomIndex);
+  }, []);
+
+  // Image rotation effect
+  useEffect(() => {
+    if (!isHydrated) return; // Don't start rotation until hydrated
+    
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+      
+      setTimeout(() => {
+        setCurrentImageIndex((prevIndex) => 
+          (prevIndex + 1) % userImages.length
+        );
+        setIsTransitioning(false);
+      }, 300); // Half of transition duration
+    }, 60000); // Change every 60 seconds (1 minute)
+
+    return () => clearInterval(interval);
+  }, [isHydrated]);
   
   const handlePopoverToggle = (popoverName) => {
     setActivePopover(activePopover === popoverName ? null : popoverName);
@@ -51,8 +88,16 @@ function About() {
         About Me
       </h2>
       <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-16 my-10 sm:my-16 lg:my-20 max-w-7xl mx-auto">
-        <div className='w-48 sm:w-64 md:w-80 aspect-[3/4] rounded-3xl max-w-none relative flex-shrink-0'>
-          <Image src={assets.user_image} alt="user" fill className='object-cover rounded-3xl' />
+        <div className='w-48 sm:w-64 md:w-80 aspect-[3/4] rounded-3xl max-w-none relative flex-shrink-0 overflow-hidden'>
+          <div className={`absolute inset-0 transition-opacity duration-600 ease-in-out ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+            <Image 
+              src={userImages[currentImageIndex]} 
+              alt="user" 
+              fill 
+              className='object-cover rounded-3xl' 
+              priority
+            />
+          </div>
         </div>
 
         <div className='flex-1 w-full'>
