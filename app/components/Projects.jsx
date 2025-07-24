@@ -257,7 +257,7 @@ function Projects() {
     },
     {
       category: "Fellowship Project",
-      title: "Construction Company Website",
+      title: "Demo Construction Website",
       src: "/construction-1.png",
       content: (
         <div>
@@ -332,8 +332,8 @@ function Projects() {
       ),
     },
     {
-      category: "Game Development",
-      title: "Hallucinations - Horror Game",
+      category: "Course Project",
+      title: "Hallucinations Horror Game",
       src: "/horror-1.png",
       content: (
         <div>
@@ -409,7 +409,7 @@ function Projects() {
       ),
     },
     {
-      category: "Web Development",
+      category: "Personal Project",
       title: "Portfolio Website",
       src: "/portfolio-1.png",
       content: (

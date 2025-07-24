@@ -13,18 +13,27 @@ const languagesDetails = [
 ];
 
 function About() {
-  const [popoverOpen, setPopoverOpen] = useState(false);
-  const langCardRef = useRef(null);
-  const [openPopover, setOpenPopover] = useState(null);
-  const [touchOpenPopover, setTouchOpenPopover] = useState(null);
+  const [activePopover, setActivePopover] = useState(null);
   const [clickedItem, setClickedItem] = useState(null);
-
+  
   const handlePopoverToggle = (popoverName) => {
-    setTouchOpenPopover(touchOpenPopover === popoverName ? null : popoverName);
+    setActivePopover(activePopover === popoverName ? null : popoverName);
+  };
+
+  const handleMouseEnter = (popoverName) => {
+    if (window.innerWidth >= 1024) {
+      setActivePopover(popoverName);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (window.innerWidth >= 1024) {
+      setActivePopover(null);
+    }
   };
 
   const isPopoverOpen = (popoverName) => {
-    return touchOpenPopover === popoverName || openPopover === popoverName;
+    return activePopover === popoverName;
   };
 
   const handleItemClick = (itemName) => {
@@ -58,10 +67,9 @@ function About() {
                 return (
                   <li
                     key={index}
-                    className={`relative border-[0.5px] border-gray-400 rounded-xl p-4 sm:p-6 cursor-pointer transition-all duration-500 hover:scale-105 h-full ${(popoverOpen || touchOpenPopover === 'Languages') ? 'z-[99999] md:z-30' : 'z-30'}`}
-                    ref={langCardRef}
-                    onMouseEnter={() => window.innerWidth >= 1024 && setPopoverOpen(true)}
-                    onMouseLeave={() => window.innerWidth >= 1024 && setPopoverOpen(false)}
+                    className={`relative border-[0.5px] border-gray-400 rounded-xl p-4 sm:p-6 cursor-pointer transition-all duration-500 hover:scale-105 h-full ${isPopoverOpen('Languages') ? 'z-[99999] md:z-30' : 'z-30'}`}
+                    onMouseEnter={() => handleMouseEnter('Languages')}
+                    onMouseLeave={handleMouseLeave}
                     onClick={() => handlePopoverToggle('Languages')}
                   >
                     {/* Collapsed (default) state */}
@@ -72,7 +80,7 @@ function About() {
                     </div>
 
                     {/* Popover for detailed info */}
-                    {(popoverOpen || touchOpenPopover === 'Languages') && (
+                    {isPopoverOpen('Languages') && (
                       <div
                         className="absolute left-1/2 top-full z-[9999] w-72 -translate-x-1/2 mt-4 bg-white lg:bg-white/90 lg:backdrop-blur-lg rounded-xl p-6 shadow-2xl border border-white/20 animate-fade-in"
                         style={{ minWidth: '18rem' }}
@@ -107,8 +115,8 @@ function About() {
                   <li
                     key={index}
                     className={`relative border-[0.5px] border-gray-400 rounded-xl p-4 sm:p-6 cursor-pointer transition-all duration-500 hover:scale-105 h-full ${isPopoverOpen('Education') ? 'z-[10000] md:z-30' : 'z-30'}`}
-                    onMouseEnter={() => window.innerWidth >= 1024 && setOpenPopover('Education')}
-                    onMouseLeave={() => window.innerWidth >= 1024 && setOpenPopover(null)}
+                    onMouseEnter={() => handleMouseEnter('Education')}
+                    onMouseLeave={handleMouseLeave}
                     onClick={() => handlePopoverToggle('Education')}
                   >
                     {/* Collapsed (default) state */}
@@ -146,8 +154,8 @@ function About() {
                   <li
                     key={index}
                     className={`relative border-[0.5px] border-gray-400 rounded-xl p-4 sm:p-6 cursor-pointer transition-all duration-500 hover:scale-105 h-full ${isPopoverOpen('Projects') ? 'z-[9999] md:z-30' : 'z-30'}`}
-                    onMouseEnter={() => window.innerWidth >= 1024 && setOpenPopover('Projects')}
-                    onMouseLeave={() => window.innerWidth >= 1024 && setOpenPopover(null)}
+                    onMouseEnter={() => handleMouseEnter('Projects')}
+                    onMouseLeave={handleMouseLeave}
                     onClick={() => handlePopoverToggle('Projects')}
                   >
                     {/* Collapsed (default) state */}
