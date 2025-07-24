@@ -59,6 +59,7 @@ import css from './css.png';
 import next from './next.png';
 import docker from './docker.png';
 import kubernetes from './kubernetes.png';
+import html from './html.png';
 
 export const assets = {
     user_image,
@@ -122,6 +123,7 @@ export const assets = {
     next,
     docker,
     kubernetes,
+    html,
 };
 
 export const workData = [
@@ -157,7 +159,7 @@ export const serviceData = [
 export const infoList = [
     { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'Python, JavaScript, Java, SQL, VBA, C' },
     { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'Computer Science,BS UMass Boston ' },
-    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: '3+ Real World Projects' }
+    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: '6 Real World Projects' }
 ];
 
 
@@ -188,7 +190,13 @@ export const frameworkData = [
 
 export const projectsData = [
   {
-    name: 'Attendance SMS System',
+    name: 'NFC Apple Pay Attendance System',
+    type: 'Course Project',
+    hours: 30,
+    languages: ['python', 'cpp'],
+  },
+  {
+    name: 'Automated Attendance SMS System',
     type: 'Client Project',
     hours: 60,
     languages: ['ts', 'js', 'css'],
@@ -200,21 +208,21 @@ export const projectsData = [
     languages: ['python'],
   },
   {
-    name: 'Portfolio Website',
-    type: 'Personal Project',
-    hours: 70,
-    languages: ['js', 'css'],
-  },
-  {
-    name: 'NFC Apple Pay Attendance System',
-    type: 'Course Project',
+    name: 'Construction Company Website',
+    type: 'Fellowship Project',
     hours: 40,
-    languages: ['python', 'cpp'],
+    languages: ['js', 'html', 'css'],
   },
   {
-    name: 'Hallucinations Horror Game',
-    type: 'Course Project',
+    name: 'Hallucinations - Horror Game',
+    type: 'Game Development',
     hours: 80,
     languages: ['unity', 'csharp'],
+  },
+  {
+    name: 'Portfolio Website',
+    type: 'Web Development',
+    hours: 70,
+    languages: ['js', 'css'],
   },
 ];

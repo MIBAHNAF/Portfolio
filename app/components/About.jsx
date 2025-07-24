@@ -166,7 +166,17 @@ function About() {
                               key={proj.name}
                               className='flex items-center justify-between gap-2 p-2 rounded-lg transition-all duration-300 hover:bg-gray-100 hover:scale-105 hover:shadow-md cursor-pointer'
                               onClick={() => {
+                                // First scroll to projects section
                                 document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                                
+                                // Then wait a bit and trigger navigation to specific card
+                                setTimeout(() => {
+                                  // Create a custom event to navigate to specific project card
+                                  const event = new CustomEvent('navigateToProject', {
+                                    detail: { projectIndex: i }
+                                  });
+                                  window.dispatchEvent(event);
+                                }, 800); // Wait for scroll to complete
                               }}
                             >
                               <div className='flex flex-col items-start'>
