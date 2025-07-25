@@ -11,8 +11,13 @@ const ovo = Ovo({
 });
 
 export const metadata = {
-  title: "Mir Ahnaf Ali Portfolio",
+  title: "Mir Ahnaf Ali",
   description: "",
+  icons: {
+    icon: '/fav.png',
+    shortcut: '/fav.png',
+    apple: '/fav.png',
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useTheme } from '../contexts/ThemeContext'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
@@ -55,14 +55,14 @@ const experiences = [
   },
 ]
 
-const ExperienceCard = ({ data, isRight, isActive, onToggle, isDark }) => (
+const ExperienceCard = ({ data, isRight, isActive, onToggle, isDark, cardRef }) => (
   <div 
-    className={`bg-transparent ${isRight ? 'lg:pl-8' : 'lg:pr-8'} group cursor-pointer transition-all duration-300`}
-    onClick={onToggle}
+    ref={cardRef}
+    className={`bg-transparent ${isRight ? 'lg:pl-8' : 'lg:pr-8'} group transition-all duration-300`}
   >
-    <p className={`text-xs sm:text-sm font-semibold transition-colors duration-300 ${isActive ? (isDark ? 'text-orange-500' : 'text-blue-500') : isDark ? 'text-gray-300 group-hover:text-orange-400' : 'text-gray-600 group-hover:text-blue-500'}`}>{data.period}</p>
+    <p className={`text-xs sm:text-sm font-semibold transition-colors duration-300 ${isActive ? (isDark ? 'text-orange-500' : 'text-blue-500') : isDark ? 'text-gray-300' : 'text-gray-600'}`}>{data.period}</p>
     <h3 className={`text-lg sm:text-xl lg:text-2xl font-bold mt-1 font-Ovo ${isDark ? 'text-white' : 'text-gray-900'}`}>{data.company}</h3>
-    <p className={`text-base sm:text-lg font-medium italic font-Ovo transition-colors duration-300 ${isActive ? (isDark ? 'text-orange-500' : 'text-blue-500') : isDark ? 'text-gray-300 group-hover:text-orange-400' : 'text-gray-700 group-hover:text-blue-500'}`}>{data.role}</p>
+    <p className={`text-base sm:text-lg font-medium italic font-Ovo transition-colors duration-300 ${isActive ? (isDark ? 'text-orange-500' : 'text-blue-500') : isDark ? 'text-gray-300' : 'text-gray-700'}`}>{data.role}</p>
     <p className={`text-sm sm:text-base mb-3 sm:mb-4 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{data.location}</p>
     <ul className={`list-none space-y-1.5 sm:space-y-2 text-sm sm:text-base ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
       {data.points.map((point, idx) => (
@@ -75,13 +75,50 @@ const ExperienceCard = ({ data, isRight, isActive, onToggle, isDark }) => (
 function Experiences() {
   const { isDark } = useTheme();
   const [activeExperience, setActiveExperience] = useState(null);
+  const cardRefs = useRef([]);
   
   // Animation refs and hooks
   const [titleRef, titleInView] = useScrollAnimation();
   const [contentRef, contentInView] = useScrollAnimation();
 
+  // Intersection Observer for scroll-based activation
+  useEffect(() => {
+    const observers = cardRefs.current.map((cardRef, index) => {
+      if (!cardRef) return null;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Check if the element is at the top portion of the viewport
+              const rect = entry.boundingClientRect;
+              const viewportHeight = window.innerHeight;
+              const topThreshold = viewportHeight * 0.3; // Top 30% of screen
+              
+              if (rect.top <= topThreshold && rect.bottom >= 0) {
+                setActiveExperience(index);
+              }
+            }
+          });
+        },
+        {
+          threshold: [0.1, 0.3, 0.5, 0.7, 0.9],
+          rootMargin: '-20% 0px -60% 0px'
+        }
+      );
+
+      observer.observe(cardRef);
+      return observer;
+    });
+
+    return () => {
+      observers.forEach(observer => observer && observer.disconnect());
+    };
+  }, [experiences.length]);
+
   const toggleExperience = (index) => {
-    setActiveExperience(activeExperience === index ? null : index);
+    // Scroll-based activation only, no manual toggle
+    return;
   };
 
   return (
@@ -106,7 +143,7 @@ function Experiences() {
           <div key={idx} className='relative flex mb-8 sm:mb-12 lg:mb-16 group'>
             {/* Dot */}
             <div className='absolute left-[11px] sm:left-[21px] lg:left-[calc(50%-9px)] z-10'>
-              <span className={`block w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] rounded-full transition-colors duration-300 ${activeExperience === idx ? (isDark ? 'bg-orange-500' : 'bg-blue-500') : isDark ? 'bg-gray-600 group-hover:bg-orange-400' : 'bg-slate-600 group-hover:bg-blue-500'}`}></span>
+              <span className={`block w-[18px] h-[18px] sm:w-[20px] sm:h-[20px] rounded-full transition-colors duration-300 ${activeExperience === idx ? (isDark ? 'bg-orange-500' : 'bg-blue-500') : isDark ? 'bg-gray-600' : 'bg-slate-600'}`}></span>
             </div>
 
             {/* Content */}
@@ -119,6 +156,7 @@ function Experiences() {
                     isActive={activeExperience === idx}
                     onToggle={() => toggleExperience(idx)}
                     isDark={isDark}
+                    cardRef={(el) => cardRefs.current[idx] = el}
                   />
                 </div>
               </div>

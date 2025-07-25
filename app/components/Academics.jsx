@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { assets } from '../../assets/assets'
 import { useTheme } from '../contexts/ThemeContext'
@@ -6,11 +6,78 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 
 function Academics() {
   const { isDark } = useTheme();
+  const [activeScholarship, setActiveScholarship] = useState(null);
+  const [activeGPA, setActiveGPA] = useState(false);
+  const scholarshipRefs = useRef([]);
+  const gpaRef = useRef(null);
   
   // Animation refs and hooks
   const [titleRef, titleInView] = useScrollAnimation();
   const [schoolRef, schoolInView] = useScrollAnimation();
   const [courseworkRef, courseworkInView] = useScrollAnimation();
+
+  // Intersection Observer for scroll-based activation
+  useEffect(() => {
+    // Observer for scholarships
+    const observers = scholarshipRefs.current.map((scholarshipRef, index) => {
+      if (!scholarshipRef) return null;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Check if the element is at the top portion of the viewport
+              const rect = entry.boundingClientRect;
+              const viewportHeight = window.innerHeight;
+              const topThreshold = viewportHeight * 0.3; // Top 30% of screen
+              
+              if (rect.top <= topThreshold && rect.bottom >= 0) {
+                setActiveScholarship(index);
+              }
+            }
+          });
+        },
+        {
+          threshold: [0.1, 0.3, 0.5, 0.7, 0.9],
+          rootMargin: '-20% 0px -60% 0px'
+        }
+      );
+
+      observer.observe(scholarshipRef);
+      return observer;
+    });
+
+    // Observer for GPA
+    let gpaObserver = null;
+    if (gpaRef.current) {
+      gpaObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const rect = entry.boundingClientRect;
+            const viewportHeight = window.innerHeight;
+            const topThreshold = viewportHeight * 0.3; // Top 30% of screen
+            
+            if (entry.isIntersecting && rect.top <= topThreshold && rect.bottom >= 0) {
+              setActiveGPA(true);
+            } else {
+              setActiveGPA(false);
+            }
+          });
+        },
+        {
+          threshold: [0.1, 0.3, 0.5, 0.7, 0.9],
+          rootMargin: '-20% 0px -60% 0px'
+        }
+      );
+
+      gpaObserver.observe(gpaRef.current);
+    }
+
+    return () => {
+      observers.forEach(observer => observer && observer.disconnect());
+      if (gpaObserver) gpaObserver.disconnect();
+    };
+  }, []);
   
   // School Information
   const schoolInfo = {
@@ -89,18 +156,20 @@ function Academics() {
                   <p className={`text-xs sm:text-sm md:text-base ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{schoolInfo.expectedGraduation}</p>
                 </div>
                 
-                <div className='space-y-1 sm:space-y-2'>
+                  <div className='space-y-1 sm:space-y-2'>
                   <h4 className={`font-semibold text-xs sm:text-sm md:text-base ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>Cumulative GPA</h4>
-                  <div className='relative inline-block'>
-                    <a href="/tscript.pdf" download 
-                    className={`text-xs sm:text-sm md:text-base transition-colors duration-300 cursor-pointer group ${isDark ? 'text-gray-300 hover:text-orange-400' : 'text-gray-600 hover:text-blue-600'}`}
-                    >
-                      {schoolInfo.gpa}
-                    </a>
-                    <div className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 sm:px-3 py-1 sm:py-2 text-white text-xs sm:text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap hidden sm:block ${isDark ? 'bg-orange-600' : 'bg-blue-600'}`}>
-                      Download Transcript
-                    </div>
-                  </div>
+                  <a 
+                    ref={gpaRef}
+                    href="/tscript.pdf" 
+                    download 
+                    className={`text-xs sm:text-sm md:text-base transition-all duration-300 cursor-pointer ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
+                  >
+                    <span className={`transition-all duration-300 ${
+                      activeGPA 
+                        ? (isDark ? 'text-orange-400 transform scale-105' : 'text-blue-600 transform scale-105') 
+                        : (isDark ? 'text-gray-300' : 'text-gray-600')
+                    }`}>3.962</span>/4.0
+                  </a>
                 </div>
               </div>
             </div>
@@ -178,10 +247,25 @@ function Academics() {
                   <h5 className={`font-medium text-xs sm:text-sm md:text-base ${isDark ? 'text-white' : 'text-gray-800'}`}>The Teehan Scholarship</h5>
                   <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Academic Excellence</p>
                 </div>
-                <div className={`rounded-lg p-2 sm:p-3 md:p-4 border hover:shadow-md transition-all duration-200 cursor-pointer ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-gray-600 hover:border-gray-500' : 'bg-white border-gray-300 hover:bg-gray-50 hover:border-gray-400'}`}>
+                <div 
+                  ref={(el) => scholarshipRefs.current[0] = el}
+                  className={`rounded-lg p-2 sm:p-3 md:p-4 border transition-all duration-200 cursor-pointer ${
+                    activeScholarship === 0 
+                      ? (isDark ? 'bg-orange-900/20 border-orange-500' : 'bg-blue-50 border-blue-500') 
+                      : (isDark ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300')
+                  }`}
+                >
                   <a href="https://ai.umb.edu/about-paul-english/" target="_blank" rel="noopener noreferrer" className='block'>
-                    <h5 className={`font-medium text-xs sm:text-sm md:text-base transition-colors duration-200 ${isDark ? 'text-white hover:text-orange-400' : 'text-gray-800 hover:text-blue-600'}`}>The Paul English Scholarship</h5>
-                    <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 transition-colors duration-200 ${isDark ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-600'}`}>CSM Excellence Award</p>
+                    <h5 className={`font-medium text-xs sm:text-sm md:text-base transition-colors duration-200 ${
+                      activeScholarship === 0 
+                        ? (isDark ? 'text-orange-400' : 'text-blue-600') 
+                        : (isDark ? 'text-white' : 'text-gray-800')
+                    }`}>The Paul English Scholarship</h5>
+                    <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 transition-colors duration-200 ${
+                      activeScholarship === 0 
+                        ? (isDark ? 'text-orange-300' : 'text-blue-500') 
+                        : (isDark ? 'text-gray-400' : 'text-gray-500')
+                    }`}>CSM Excellence Award</p>
                   </a>
                 </div>
               </div>
@@ -195,10 +279,25 @@ function Academics() {
                   <h5 className={`font-medium text-xs sm:text-sm md:text-base ${isDark ? 'text-white' : 'text-gray-800'}`}>Donohue Scholarship</h5>
                   <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Academic Merit</p>
                 </div>
-                <div className={`rounded-lg p-2 sm:p-3 md:p-4 border hover:shadow-md transition-all duration-200 cursor-pointer ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-gray-600 hover:border-gray-500' : 'bg-white border-gray-300 hover:bg-gray-50 hover:border-gray-400'}`}>
+                <div 
+                  ref={(el) => scholarshipRefs.current[1] = el}
+                  className={`rounded-lg p-2 sm:p-3 md:p-4 border transition-all duration-200 cursor-pointer ${
+                    activeScholarship === 1 
+                      ? (isDark ? 'bg-orange-900/20 border-orange-500' : 'bg-blue-50 border-blue-500') 
+                      : (isDark ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300')
+                  }`}
+                >
                   <a href="https://ai.umb.edu/about-paul-english/" target="_blank" rel="noopener noreferrer" className='block'>
-                    <h5 className={`font-medium text-xs sm:text-sm md:text-base transition-colors duration-200 ${isDark ? 'text-white hover:text-orange-400' : 'text-gray-800 hover:text-blue-600'}`}>The Paul English Scholarship</h5>
-                    <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 transition-colors duration-200 ${isDark ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-600'}`}>CSM Excellence Award</p>
+                    <h5 className={`font-medium text-xs sm:text-sm md:text-base transition-colors duration-200 ${
+                      activeScholarship === 1 
+                        ? (isDark ? 'text-orange-400' : 'text-blue-600') 
+                        : (isDark ? 'text-white' : 'text-gray-800')
+                    }`}>The Paul English Scholarship</h5>
+                    <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 transition-colors duration-200 ${
+                      activeScholarship === 1 
+                        ? (isDark ? 'text-orange-300' : 'text-blue-500') 
+                        : (isDark ? 'text-gray-400' : 'text-gray-500')
+                    }`}>CSM Excellence Award</p>
                   </a>
                 </div>
                 <div className={`rounded-lg p-2 sm:p-3 md:p-4 border hover:shadow-md transition-shadow duration-200 ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-gray-600' : 'bg-white border-gray-200 hover:bg-gray-50'}`}>
@@ -220,10 +319,25 @@ function Academics() {
                   <h5 className={`font-medium text-xs sm:text-sm md:text-base ${isDark ? 'text-white' : 'text-gray-800'}`}>Donohue Scholarship</h5>
                   <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Continued Excellence</p>
                 </div>
-                <div className={`rounded-lg p-2 sm:p-3 md:p-4 border hover:shadow-md transition-all duration-200 cursor-pointer ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-gray-600 hover:border-gray-500' : 'bg-white border-gray-300 hover:bg-gray-50 hover:border-gray-400'}`}>
+                <div 
+                  ref={(el) => scholarshipRefs.current[2] = el}
+                  className={`rounded-lg p-2 sm:p-3 md:p-4 border transition-all duration-200 cursor-pointer ${
+                    activeScholarship === 2 
+                      ? (isDark ? 'bg-orange-900/20 border-orange-500' : 'bg-blue-50 border-blue-500') 
+                      : (isDark ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300')
+                  }`}
+                >
                   <a href="https://ai.umb.edu/about-paul-english/" target="_blank" rel="noopener noreferrer" className='block'>
-                    <h5 className={`font-medium text-xs sm:text-sm md:text-base transition-colors duration-200 ${isDark ? 'text-white hover:text-orange-400' : 'text-gray-800 hover:text-blue-600'}`}>The Paul English Scholarship</h5>
-                    <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 transition-colors duration-200 ${isDark ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-600'}`}>CSM Excellence Award (3rd Time)</p>
+                    <h5 className={`font-medium text-xs sm:text-sm md:text-base transition-colors duration-200 ${
+                      activeScholarship === 2 
+                        ? (isDark ? 'text-orange-400' : 'text-blue-600') 
+                        : (isDark ? 'text-white' : 'text-gray-800')
+                    }`}>The Paul English Scholarship</h5>
+                    <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 transition-colors duration-200 ${
+                      activeScholarship === 2 
+                        ? (isDark ? 'text-orange-300' : 'text-blue-500') 
+                        : (isDark ? 'text-gray-400' : 'text-gray-500')
+                    }`}>CSM Excellence Award (3rd Time)</p>
                   </a>
                 </div>
                 <div className={`rounded-lg p-2 sm:p-3 md:p-4 border hover:shadow-md transition-shadow duration-200 ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-gray-600' : 'bg-white border-gray-200 hover:bg-gray-50'}`}>
@@ -236,15 +350,39 @@ function Academics() {
 
           {/* Special Recognition */}
           <div className={`mt-4 sm:mt-6 md:mt-8 pt-3 sm:pt-4 md:pt-6 border-t ${isDark ? 'border-gray-600' : 'border-gray-200'}`}>
-            <a href="https://ai.umb.edu/about-paul-english/" target="_blank" rel="noopener noreferrer" className='block'>
-              <div className={`rounded-lg p-3 sm:p-4 md:p-6 border hover:shadow-md transition-shadow duration-200 cursor-pointer group ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-gray-600' : 'bg-gray-50 border-gray-200 hover:bg-gray-100'}`}>
-                <h4 className={`font-semibold mb-1 sm:mb-2 text-xs sm:text-sm md:text-base transition-colors duration-200 ${isDark ? 'text-white group-hover:text-orange-400' : 'text-gray-800 group-hover:text-blue-600'}`}>Special Recognition</h4>
-                <p className={`text-xs sm:text-sm leading-tight ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+            <div 
+              ref={(el) => scholarshipRefs.current[3] = el}
+              className={`rounded-lg p-3 sm:p-4 md:p-6 border transition-all duration-300 cursor-pointer transform perspective-1000 ${
+                activeScholarship === 3 
+                  ? (isDark 
+                      ? 'bg-orange-900/30 border-orange-400 shadow-lg shadow-orange-500/10 scale-[1.015] rotate-x-1' 
+                      : 'bg-blue-50 border-blue-400 shadow-lg shadow-blue-500/10 scale-[1.015] rotate-x-1'
+                    ) 
+                  : (isDark ? 'bg-gray-700 border-gray-600 hover:shadow-lg' : 'bg-gray-50 border-gray-200 hover:shadow-lg')
+              }`}
+              style={{
+                transformStyle: 'preserve-3d',
+                boxShadow: activeScholarship === 3 
+                  ? `0 6px 12px ${isDark ? 'rgba(251, 146, 60, 0.09)' : 'rgba(59, 130, 246, 0.09)'}, 0 3px 6px rgba(0, 0, 0, 0.03)` 
+                  : undefined
+              }}
+            >
+              <a href="https://ai.umb.edu/about-paul-english/" target="_blank" rel="noopener noreferrer" className='block'>
+                <h4 className={`font-semibold mb-1 sm:mb-2 text-xs sm:text-sm md:text-base transition-all duration-300 ${
+                  activeScholarship === 3 
+                    ? (isDark ? 'text-orange-300 transform translate-z-2' : 'text-blue-600 transform translate-z-2') 
+                    : (isDark ? 'text-white' : 'text-gray-800')
+                }`}>Special Recognition</h4>
+                <p className={`text-xs sm:text-sm leading-tight transition-all duration-300 ${
+                  activeScholarship === 3 
+                    ? (isDark ? 'text-orange-200 transform translate-z-1' : 'text-blue-500 transform translate-z-1') 
+                    : (isDark ? 'text-gray-300' : 'text-gray-600')
+                }`}>
                   Three-time recipient of <span className='font-medium'>The Paul English Scholarship</span> - 
                   a prestigious award recognizing exceptional achievement in Computer Science
                 </p>
-              </div>
-            </a>
+              </a>
+            </div>
           </div>
         </div>
 

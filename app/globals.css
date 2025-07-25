@@ -151,3 +151,34 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* 3D Transform Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.rotate-x-2 {
+  transform: rotateX(2deg);
+}
+
+.rotate-y-1 {
+  transform: rotateY(1deg);
+}
+
+.translate-z-2 {
+  transform: translateZ(2px);
+}
+
+.translate-z-4 {
+  transform: translateZ(4px);
+}
+
+/* Enhanced 3D Effect for Special Recognition */
+.enhanced-3d {
+  transform-style: preserve-3d;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.enhanced-3d:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(2deg) scale(1.02);
+}
