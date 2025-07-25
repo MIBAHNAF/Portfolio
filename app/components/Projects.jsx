@@ -489,7 +489,7 @@ function Projects() {
         className={`text-center transition-all duration-1000 ${titleInView ? 'fadeInUp' : 'opacity-0 translate-y-8'}`}
       >
         <h4 className={`mb-2 text-base sm:text-lg font-Ovo ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>My Work</h4>
-        <h2 className={`text-3xl sm:text-4xl md:text-5xl font-Ovo mb-10 sm:mb-16 md:mb-20 ${isDark ? 'text-white' : 'text-gray-800'}`}>
+        <h2 className={`text-3xl sm:text-4xl md:text-5xl font-Ovo mb-6 sm:mb-8 md:mb-10 ${isDark ? 'text-white' : 'text-gray-800'}`}>
           Projects
         </h2>
       </div>
