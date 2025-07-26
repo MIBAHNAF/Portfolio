@@ -38,7 +38,7 @@ function Contact() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          access_key: 'e663d728-8acc-4059-a55d-9cebcee225d3', 
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
           name: formData.name,
           email: formData.email,
           message: formData.message,
