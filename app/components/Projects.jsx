@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { Carousel, Card } from '../../components/ui/apple-cards-carousel'
+import { Carousel, Card } from './ui/apple-cards-carousel'
 import { useTheme } from '../contexts/ThemeContext'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 

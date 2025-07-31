@@ -6,7 +6,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 const experiences = [
   {
     period: 'Jun 2024 - Present',
-    role: 'Software Engineering Intern - IT Systems and Security',
+    role: 'Software Engineering Intern - IT Systems',
     company: 'UMASS',
     location: 'Boston, MA',
     points: [
@@ -60,10 +60,10 @@ const ExperienceCard = ({ data, isRight, isActive, onToggle, isDark, cardRef }) 
     ref={cardRef}
     className={`bg-transparent ${isRight ? 'lg:pl-8' : 'lg:pr-8'} group transition-all duration-300`}
   >
-    <p className={`text-xs sm:text-sm font-semibold transition-colors duration-300 ${isActive ? (isDark ? 'text-orange-500' : 'text-blue-500') : isDark ? 'text-gray-300' : 'text-gray-600'}`}>{data.period}</p>
-    <h3 className={`text-lg sm:text-xl lg:text-2xl font-bold mt-1 font-Ovo ${isDark ? 'text-white' : 'text-gray-900'}`}>{data.company}</h3>
-    <p className={`text-base sm:text-lg font-medium italic font-Ovo transition-colors duration-300 ${isActive ? (isDark ? 'text-orange-500' : 'text-blue-500') : isDark ? 'text-gray-300' : 'text-gray-700'}`}>{data.role}</p>
-    <p className={`text-sm sm:text-base mb-3 sm:mb-4 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{data.location}</p>
+    <p className={`text-xs sm:text-sm font-semibold transition-colors duration-300 ${isActive ? (isDark ? 'text-orange-500' : 'text-blue-600') : isDark ? 'text-gray-300' : 'text-gray-600'}`}>{data.period}</p>
+    <h3 className={`text-lg sm:text-xl lg:text-2xl font-bold mt-1 mb-1 font-Ovo transition-colors duration-300 ${isActive ? (isDark ? 'text-orange-500' : 'text-blue-700') : isDark ? 'text-white' : 'text-gray-900'}`}>{data.role}</h3>
+    <p className={`text-sm sm:text-base font-medium font-Ovo ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{data.company}</p>
+    <p className={`text-sm mb-3 sm:mb-4 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{data.location}</p>
     <ul className={`list-none space-y-1.5 sm:space-y-2 text-sm sm:text-base ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
       {data.points.map((point, idx) => (
         <li key={idx} className="leading-relaxed">{point}</li>
