@@ -53,7 +53,7 @@ function Header() {
             > SWE Resume <Image src = {assets.download_icon} alt='' className='w-4'/></a>
             <a href = "/IT_Specialist Resume.pdf" download 
             className='px-10 py-3 border rounded-full border-gray-500 bg-white text-black flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-md'
-            > IT Resume <Image src = {assets.download_icon} alt='' className='w-4'/></a>
+            > ITS Resume <Image src = {assets.download_icon} alt='' className='w-4'/></a>
         </div>
       
     </div>
