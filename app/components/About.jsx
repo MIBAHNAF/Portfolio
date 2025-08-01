@@ -9,9 +9,10 @@ const languagesDetails = [
   { name: 'Python', years: 3, level: 'Proficient', progress: 85 },
   { name: 'JavaScript', years: 2, level: 'Proficient', progress: 85 },
   { name: 'Java', years: 1, level: 'Intermediate', progress: 70 },
-  { name: 'SQL', years: 1, level: 'Intermediate', progress: 70 },
-  { name: 'VBA', years: 1, level: 'Intermediate', progress: 70 },
-  { name: 'C', years: 1, level: 'Beginner', progress: 50 },
+  { name: 'C++', years: 1, level: 'Intermediate', progress: 70 },
+  { name: 'C#', years: 1, level: 'Intermediate', progress: 70 },
+  { name: 'C', years: 1, level: 'Intermediate', progress: 70 },
+  { name: 'SQL', years: 1, level: 'Beginner', progress: 50 },
 ];
 
 // User images array for rotation

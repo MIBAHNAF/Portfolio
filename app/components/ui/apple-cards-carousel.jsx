@@ -76,7 +76,7 @@ export const Carousel = ({
 
   return (
     <CarouselContext.Provider value={{ onCardClose: handleCardClose, currentIndex }}>
-      <div className="relative w-full">
+      <div className="relative w-full overflow-hidden">
         <div
           className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth py-10 no-scrollbar md:py-20"
           ref={carouselRef}
@@ -86,7 +86,7 @@ export const Carousel = ({
 
           <div
             className={cn(
-              "flex flex-row justify-start gap-4 pl-4",
+              "flex flex-row justify-start gap-4 pl-4 pr-4",
               // remove max-w-4xl if you want the carousel to span the full width of its container
               "mx-auto max-w-7xl"
             )}>
@@ -179,7 +179,7 @@ export const Card = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className={`fixed inset-0 h-full w-full backdrop-blur-lg ${isDark ? 'bg-black/80' : 'bg-white/90'}`} />
+              className={`fixed inset-0 h-full w-full backdrop-blur-lg ${isDark ? 'bg-black/80' : 'bg-white/40'}`} />
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -187,10 +187,10 @@ export const Card = ({
               transition={{ duration: 0.3, ease: "easeOut" }}
               ref={containerRef}
               layoutId={layout ? `card-${card.title}` : undefined}
-              className="relative z-[60] mx-4 sm:mx-6 md:mx-8 lg:mx-[12%] my-6 md:my-10 flex flex-col h-[calc(100vh-3rem)] md:h-[calc(100vh-5rem)] rounded-3xl bg-white font-sans dark:bg-neutral-900 overflow-hidden">
+              className={`relative z-[60] mx-4 sm:mx-6 md:mx-8 lg:mx-[12%] my-6 md:my-10 flex flex-col h-[calc(100vh-3rem)] md:h-[calc(100vh-5rem)] rounded-3xl font-sans overflow-hidden ${isDark ? 'bg-gray-900 shadow-2xl shadow-black/50' : 'bg-gray-50 shadow-2xl shadow-white/80'}`}>
               
               {/* Header with close button */}
-              <div className="flex-shrink-0 p-4 md:p-6 lg:p-8 border-b border-gray-200 dark:border-gray-700">
+              <div className={`flex-shrink-0 p-4 md:p-6 lg:p-8 border-b ${isDark ? 'border-gray-700' : 'border-gray-300'}`}>
                 <button
                   className={`float-right flex h-8 w-8 items-center justify-center rounded-full transition-colors ${isDark ? 'bg-black hover:bg-gray-800' : 'bg-gray-800 hover:bg-gray-700'}`}
                   onClick={handleClose}>
@@ -198,12 +198,12 @@ export const Card = ({
                 </button>
                 <motion.p
                   layoutId={layout ? `category-${card.title}` : undefined}
-                  className="text-sm md:text-base font-medium text-black dark:text-white">
+                  className={`text-sm md:text-base font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
                   {card.category}
                 </motion.p>
                 <motion.p
                   layoutId={layout ? `title-${card.title}` : undefined}
-                  className="mt-2 text-xl md:text-2xl lg:text-4xl font-semibold text-neutral-700 dark:text-white leading-tight">
+                  className={`mt-2 text-xl md:text-2xl lg:text-4xl font-semibold leading-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
                   {card.title}
                 </motion.p>
               </div>

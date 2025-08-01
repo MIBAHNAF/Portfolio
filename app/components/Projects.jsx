@@ -61,13 +61,13 @@ function Projects() {
       src: "/nfc-1.png",
       content: (
         <div>
-          <p className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base md:text-lg font-sans mb-6 sm:mb-8">
+          <p className="text-gray-800 dark:text-neutral-400 text-sm sm:text-base md:text-lg font-sans mb-6 sm:mb-8">
             Built a cross-platform NFC attendance system with dual USB/BLE transport, EMV card parsing, and Excel automation using Python, Arduino, and Tkinter. (~30 hours development time)
           </p>
           
           <div className="mb-6 sm:mb-8">
             <h4 className="text-base sm:text-lg font-semibold text-neutral-800 dark:text-neutral-200 mb-3 sm:mb-4">Key Features:</h4>
-            <ul className="text-neutral-600 dark:text-neutral-400 space-y-1 sm:space-y-2 text-sm sm:text-base">
+            <ul className="text-gray-800 dark:text-neutral-400 space-y-1 sm:space-y-2 text-sm sm:text-base">
               <li>• Cross-platform NFC attendance tracking</li>
               <li>• Dual USB/BLE transport support</li>
               <li>• EMV card parsing for Apple Pay integration</li>
@@ -109,7 +109,7 @@ function Projects() {
               href="https://github.com/MIBAHNAF/NFC-Attendance" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:transform hover:scale-105 hover:shadow-md transition-all duration-300 text-sm sm:text-base"
+              className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 font-medium rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 hover:transform hover:scale-105 hover:shadow-md transition-all duration-300 text-sm sm:text-base"
             >
               <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
@@ -127,13 +127,13 @@ function Projects() {
       src: "/attendance-1.png",
       content: (
         <div>
-          <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-lg font-sans mb-8">
+          <p className="text-gray-800 dark:text-neutral-400 text-base md:text-lg font-sans mb-8">
             Built a web-based attendance and grading system using Next.js, TypeScript, Tailwind CSS, and Supabase, integrating SMS Chef API for automated attendance notifications and real-time student tracking. (~60 hours development time)
           </p>
           
           <div className="mb-8">
             <h4 className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 mb-4">Key Features:</h4>
-            <ul className="text-neutral-600 dark:text-neutral-400 space-y-2">
+            <ul className="text-gray-800 dark:text-neutral-400 space-y-2">
               <li>• Automated SMS notifications for attendance</li>
               <li>• Real-time student tracking dashboard</li>
               <li>• Comprehensive grading system</li>
@@ -175,7 +175,7 @@ function Projects() {
               href="https://github.com/MIBAHNAF/attendance-system" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 font-medium rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
@@ -186,7 +186,7 @@ function Projects() {
               href="https://attendance-system-six-zeta.vercel.app/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 font-medium rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
@@ -203,13 +203,13 @@ function Projects() {
       src: "/movie-1.png",
       content: (
         <div>
-          <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-lg font-sans mb-8">
+          <p className="text-gray-800 dark:text-neutral-400 text-base md:text-lg font-sans mb-8">
             Developed a machine learning movie recommendation app using Python, Scikit-learn, pandas, and MovieLens datasets to provide users with personalized recommendations based on movie themes. (~30 hours development time)
           </p>
           
           <div className="mb-8">
             <h4 className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 mb-4">Key Features:</h4>
-            <ul className="text-neutral-600 dark:text-neutral-400 space-y-2">
+            <ul className="text-gray-800 dark:text-neutral-400 space-y-2">
               <li>• Personalized movie recommendations</li>
               <li>• Content-based filtering algorithm</li>
               <li>• MovieLens dataset integration</li>
@@ -251,7 +251,7 @@ function Projects() {
               href="https://github.com/MIBAHNAF/Movie-Recommendation" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 font-medium rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
@@ -268,13 +268,13 @@ function Projects() {
       src: "/construction-1.png",
       content: (
         <div>
-          <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-lg font-sans mb-8">
+          <p className="text-gray-800 dark:text-neutral-400 text-base md:text-lg font-sans mb-8">
             Developed a fully responsive front-end website for a construction company using JavaScript, HTML, CSS, Bootstrap, and jQuery, incorporating JavaScript functionality to enhance user interaction and provide a dynamic browsing experience. (~40 hours development time)
           </p>
           
           <div className="mb-8">
             <h4 className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 mb-4">Key Features:</h4>
-            <ul className="text-neutral-600 dark:text-neutral-400 space-y-2">
+            <ul className="text-gray-800 dark:text-neutral-400 space-y-2">
               <li>• Fully responsive design for all devices</li>
               <li>• Interactive service portfolio</li>
               <li>• Dynamic project gallery</li>
@@ -316,7 +316,7 @@ function Projects() {
               href="https://github.com/MIBAHNAF/Web-Design-Experiment" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 font-medium rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
@@ -327,7 +327,7 @@ function Projects() {
               href="https://mibahnaf.github.io/Web-Design-Experiment/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 font-medium rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
@@ -344,13 +344,13 @@ function Projects() {
       src: "/horror-1.png",
       content: (
         <div>
-          <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-lg font-sans mb-8">
+          <p className="text-gray-800 dark:text-neutral-400 text-base md:text-lg font-sans mb-8">
             Hallucinations is a psychological horror game where reality blurs and survival depends on your mind. Built in Unity (URP) with C# scripting, custom Timeline cutscenes, Canvas UI, and ChatGPT-generated voice lines. Features scripted entity behavior, level transitions, and immersive horror design(~80 hours development time).
           </p>
           
           <div className="mb-8">
             <h4 className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 mb-4">Key Features:</h4>
-            <ul className="text-neutral-600 dark:text-neutral-400 space-y-2">
+            <ul className="text-gray-800 dark:text-neutral-400 space-y-2">
               <li>• Psychological horror gameplay mechanics</li>
               <li>• Custom Timeline cutscenes</li>
               <li>• AI-generated voice lines with ChatGPT</li>
@@ -393,7 +393,7 @@ function Projects() {
               href="https://github.com/MIBAHNAF/Hallucinations" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 font-medium rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
@@ -404,7 +404,7 @@ function Projects() {
               href="https://sites.google.com/site/fdurupinar/home/teaching/cs461?authuser=0" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 font-medium rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
@@ -421,13 +421,13 @@ function Projects() {
       src: "/portfolio-1.png",
       content: (
         <div>
-          <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-lg font-sans mb-8">
+          <p className="text-gray-800 dark:text-neutral-400 text-base md:text-lg font-sans mb-8">
             This very portfolio website you're viewing! Built with modern web technologies including Next.js, React, Tailwind CSS, and Framer Motion. Features responsive design, dark mode support, smooth animations, and an interactive project carousel using Aceternity UI components (~70 hours development time).
           </p>
           
           <div className="mb-8">
             <h4 className="text-lg font-semibold text-neutral-800 dark:text-neutral-200 mb-4">Key Features:</h4>
-            <ul className="text-neutral-600 dark:text-neutral-400 space-y-2">
+            <ul className="text-gray-800 dark:text-neutral-400 space-y-2">
               <li>• Fully responsive design</li>
               <li>• Dark/Light mode toggle</li>
               <li>• Interactive project carousel</li>
@@ -472,6 +472,17 @@ function Projects() {
               </svg>
               You're Here!
             </span>
+            <a 
+              href="https://github.com/MIBAHNAF/Portfolio" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 font-medium rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+              </svg>
+              View on GitHub
+            </a>
           </div>
         </div>
       ),
