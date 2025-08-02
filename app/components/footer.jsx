@@ -61,7 +61,7 @@ function Footer() {
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 md:gap-6">
           {/* Copyright */}
           <div className={`text-xs sm:text-sm font-Ovo order-2 sm:order-1 text-center sm:text-left ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            © {currentYear} Ahnaf Ali. All rights reserved.
+            © {currentYear} Mir Ahnaf Ali. All rights reserved.
           </div>
           
           {/* Social Links */}
