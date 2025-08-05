@@ -7,9 +7,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 function Academics() {
   const { isDark } = useTheme();
   const [activeScholarship, setActiveScholarship] = useState(null);
-  const [activeGPA, setActiveGPA] = useState(false);
   const scholarshipRefs = useRef([]);
-  const gpaRef = useRef(null);
   
   // Animation refs and hooks
   const [titleRef, titleInView] = useScrollAnimation();
@@ -47,35 +45,8 @@ function Academics() {
       return observer;
     });
 
-    // Observer for GPA
-    let gpaObserver = null;
-    if (gpaRef.current) {
-      gpaObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            const rect = entry.boundingClientRect;
-            const viewportHeight = window.innerHeight;
-            const topThreshold = viewportHeight * 0.3; // Top 30% of screen
-            
-            if (entry.isIntersecting && rect.top <= topThreshold && rect.bottom >= 0) {
-              setActiveGPA(true);
-            } else {
-              setActiveGPA(false);
-            }
-          });
-        },
-        {
-          threshold: [0.1, 0.3, 0.5, 0.7, 0.9],
-          rootMargin: '-20% 0px -60% 0px'
-        }
-      );
-
-      gpaObserver.observe(gpaRef.current);
-    }
-
     return () => {
       observers.forEach(observer => observer && observer.disconnect());
-      if (gpaObserver) gpaObserver.disconnect();
     };
   }, []);
   
@@ -117,7 +88,15 @@ function Academics() {
   }
 
   return (
-    <div id='Academics' className='w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-[12%] py-8 sm:py-10 scroll-mt-20'>
+    <>
+      <style jsx>{`
+        @keyframes gradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
+      <div id='Academics' className='w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-[12%] py-8 sm:py-10 scroll-mt-20'>
       <div 
         ref={titleRef}
         className={`text-center transition-all duration-1000 ${titleInView ? 'fadeInUp' : 'opacity-0 translate-y-8'}`}
@@ -159,16 +138,20 @@ function Academics() {
                   <div className='space-y-1 sm:space-y-2'>
                   <h4 className={`font-semibold text-xs sm:text-sm md:text-base ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>Cumulative GPA</h4>
                   <a 
-                    ref={gpaRef}
                     href="/tscript.pdf" 
                     download 
                     className={`text-xs sm:text-sm md:text-base transition-all duration-300 cursor-pointer ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
                   >
-                    <span className={`transition-all duration-300 ${
-                      activeGPA 
-                        ? (isDark ? 'text-orange-400 transform scale-105' : 'text-blue-600 transform scale-105') 
-                        : (isDark ? 'text-gray-300' : 'text-gray-600')
-                    }`}>3.962</span>/4.0
+                    <span className={`transition-all duration-300 inline-block transform scale-105 ${
+                      isDark 
+                        ? 'bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent animate-pulse' 
+                        : 'bg-gradient-to-r from-green-700 via-blue-700 to-blue-900 bg-clip-text text-transparent animate-pulse'
+                    }`}
+                    style={{
+                      backgroundSize: '200% 200%',
+                      animation: 'gradientShift 3s ease-in-out infinite'
+                    }}
+                    >3.962</span>/4.0
                   </a>
                 </div>
               </div>
@@ -388,6 +371,7 @@ function Academics() {
 
       </div>
     </div>
+    </>
   )
 }
 

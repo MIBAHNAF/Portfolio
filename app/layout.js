@@ -2,6 +2,7 @@ import { Outfit, Ovo } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { Analytics } from "@vercel/analytics/next"
+import { BackgroundBeamsWithCollision } from "./components/ui/background-beams-collision";
 
 const outfit =Outfit({
   subsets: ["latin"], weight: ["400", "500", "600", "700"],
@@ -29,7 +30,8 @@ export default function RootLayout({ children }) {
           overflow-x-hidden`}
       >
         <ThemeProvider>
-          <div className="min-h-screen transition-colors duration-300">
+          <BackgroundBeamsWithCollision />
+          <div className="min-h-screen transition-colors duration-300 relative z-10">
             {children}
           </div>
         </ThemeProvider>

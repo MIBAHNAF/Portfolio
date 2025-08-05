@@ -214,7 +214,7 @@ export const projectsData = [
     languages: ['python'],
   },
   {
-    name: 'Construction Company Website',
+    name: 'Demo Construction Website',
     type: 'Fellowship Project',
     hours: 40,
     languages: ['js', 'html', 'css'],
