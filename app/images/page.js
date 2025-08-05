@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 export const metadata = {
-  title: 'Mir Ahnaf Ali - Software Engineer Portfolio',
+  title: 'Mir Ahnaf Ali - Full Stack Software Engineer',
   description: 'Professional profile and image of Mir Ahnaf Ali - Software Engineer and Computer Science student at UMass Boston',
 }
 
