@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { assets } from '../../assets/assets'
 import { useTheme } from '../contexts/ThemeContext'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import { getGoogleDriveDownloadLink } from '../../config/resumeLinks'
 
 function Academics() {
   const { isDark } = useTheme();
@@ -13,6 +14,9 @@ function Academics() {
   const [titleRef, titleInView] = useScrollAnimation();
   const [schoolRef, schoolInView] = useScrollAnimation();
   const [courseworkRef, courseworkInView] = useScrollAnimation();
+
+  // Google Drive file ID for transcript (extracted from your link)
+  const TRANSCRIPT_FILE_ID = "19l-V0HF4cEurXbQQngUxX2iOuAaTQuN6";
 
   // Intersection Observer for scroll-based activation
   useEffect(() => {
@@ -138,9 +142,10 @@ function Academics() {
                   <div className='space-y-1 sm:space-y-2'>
                   <h4 className={`font-semibold text-xs sm:text-sm md:text-base ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>Cumulative GPA</h4>
                   <a 
-                    href="/tscript.pdf" 
-                    download 
-                    className={`text-xs sm:text-sm md:text-base transition-all duration-300 cursor-pointer ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
+                    href={getGoogleDriveDownloadLink(TRANSCRIPT_FILE_ID)}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={`text-xs sm:text-sm md:text-base transition-all duration-300 cursor-pointer hover:scale-105 inline-flex items-center gap-2 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
                   >
                     <span className={`transition-all duration-300 inline-block transform scale-105 ${
                       isDark 
@@ -152,6 +157,7 @@ function Academics() {
                       animation: 'gradientShift 3s ease-in-out infinite'
                     }}
                     >3.962</span>/4.0
+                    <Image src={assets.download_icon} alt='Download Transcript' className='w-3 h-3 sm:w-4 sm:h-4 opacity-70 hover:opacity-100 transition-opacity duration-200'/>
                   </a>
                 </div>
               </div>

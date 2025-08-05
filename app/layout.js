@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { Analytics } from "@vercel/analytics/next"
 import { BackgroundBeamsWithCollision } from "./components/ui/background-beams-collision";
+import StructuredData from "./components/StructuredData";
 
 const outfit =Outfit({
   subsets: ["latin"], weight: ["400", "500", "600", "700"],
@@ -13,8 +14,49 @@ const ovo = Ovo({
 });
 
 export const metadata = {
-  title: "Mir Ahnaf Ali",
-  description: "",
+  title: "Mir Ahnaf Ali - Software Engineer & Full Stack Developer",
+  description: "Portfolio of Mir Ahnaf Ali - Computer Science student at UMass Amherst specializing in full-stack development, machine learning, and software engineering. View my projects including NFC attendance systems, web applications, and game development.",
+  keywords: "Mir Ahnaf Ali, Software Engineer, Full Stack Developer, Computer Science, UMass Amherst, Portfolio, Web Development, Machine Learning, React, Next.js, Python, Unity",
+  author: "Mir Ahnaf Ali",
+  openGraph: {
+    title: "Mir Ahnaf Ali - Software Engineer Portfolio",
+    description: "Portfolio showcasing projects in web development, machine learning, and software engineering",
+    url: "https://mirahnaf-ali.com",
+    siteName: "Mir Ahnaf Ali Portfolio",
+    images: [
+      {
+        url: "https://mirahnaf-ali.com/user-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Mir Ahnaf Ali - Software Engineer",
+      },
+      {
+        url: "https://mirahnaf-ali.com/portfolio-1.png",
+        width: 1200,
+        height: 630,
+        alt: "Mir Ahnaf Ali Portfolio Website",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mir Ahnaf Ali - Software Engineer Portfolio",
+    description: "Portfolio showcasing projects in web development, machine learning, and software engineering",
+    images: ["https://mirahnaf-ali.com/user-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   icons: {
     icon: '/fav.png',
     shortcut: '/fav.png',
@@ -25,6 +67,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className='scroll-smooth'>
+      <head>
+        <StructuredData />
+      </head>
       <body
         className={`${outfit.className} ${ovo.className} antialiased leading-8
           overflow-x-hidden`}
