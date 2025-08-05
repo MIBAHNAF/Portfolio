@@ -14,19 +14,16 @@ const ovo = Ovo({
 });
 
 export const metadata = {
-  title: "Mir Ahnaf Ali - Software Engineer & Full Stack Developer",
-  description: "Portfolio of Mir Ahnaf Ali - Computer Science student at UMass Amherst specializing in full-stack development, machine learning, and software engineering. View my projects including NFC attendance systems, web applications, and game development.",
-  keywords: "Mir Ahnaf Ali, Software Engineer, Full Stack Developer, Computer Science, UMass Amherst, Portfolio, Web Development, Machine Learning, React, Next.js, Python, Unity",
+  title: "Mir Ahnaf Ali - Full Stack Software Engineer",
+  description: "Mir Ahnaf Ali - Computer Science student at UMass Boston specializing in full-stack development, machine learning, and software engineering.",
+  keywords: "Mir Ahnaf Ali, Software Engineer, Full Stack Developer, Computer Science, UMass Boston",
   author: "Mir Ahnaf Ali",
-  // Add your Google Search Console verification code here when you get it
-  // verification: {
-  //   google: "YOUR_VERIFICATION_CODE_HERE"
-  // },
+  
   openGraph: {
-    title: "Mir Ahnaf Ali - Software Engineer Portfolio",
-    description: "Portfolio showcasing projects in web development, machine learning, and software engineering",
+    title: "Mir Ahnaf Ali - Full Stack Software Engineer",
+    description: "Computer Science student at UMass Boston specializing in full-stack development and software engineering",
     url: "https://mirahnaf-ali.com",
-    siteName: "Mir Ahnaf Ali Portfolio",
+    siteName: "Mir Ahnaf Ali",
     images: [
       {
         url: "https://mirahnaf-ali.com/user-image.png",
@@ -34,21 +31,9 @@ export const metadata = {
         height: 630,
         alt: "Mir Ahnaf Ali - Software Engineer",
       },
-      {
-        url: "https://mirahnaf-ali.com/portfolio-1.png",
-        width: 1200,
-        height: 630,
-        alt: "Mir Ahnaf Ali Portfolio Website",
-      },
     ],
     locale: "en_US",
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Mir Ahnaf Ali - Software Engineer Portfolio",
-    description: "Portfolio showcasing projects in web development, machine learning, and software engineering",
-    images: ["https://mirahnaf-ali.com/user-image.png"],
   },
   robots: {
     index: true,
