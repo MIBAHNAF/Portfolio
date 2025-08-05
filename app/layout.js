@@ -18,6 +18,10 @@ export const metadata = {
   description: "Portfolio of Mir Ahnaf Ali - Computer Science student at UMass Amherst specializing in full-stack development, machine learning, and software engineering. View my projects including NFC attendance systems, web applications, and game development.",
   keywords: "Mir Ahnaf Ali, Software Engineer, Full Stack Developer, Computer Science, UMass Amherst, Portfolio, Web Development, Machine Learning, React, Next.js, Python, Unity",
   author: "Mir Ahnaf Ali",
+  // Add your Google Search Console verification code here when you get it
+  // verification: {
+  //   google: "YOUR_VERIFICATION_CODE_HERE"
+  // },
   openGraph: {
     title: "Mir Ahnaf Ali - Software Engineer Portfolio",
     description: "Portfolio showcasing projects in web development, machine learning, and software engineering",
