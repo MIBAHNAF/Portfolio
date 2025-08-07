@@ -10,100 +10,90 @@ export const BackgroundBeamsWithCollision = ({
 }) => {
   const { isDark } = useTheme();
 
-  // Optimized beams for all screen sizes using viewport units
+  // Random optimized beams - responsive count based on screen size
   const beams = [
-    // Group 1 - Left edge (3 beams) 5-25%
+    // Mobile: 6 beams, Desktop: 10 beams
     {
-      initialX: "5vw",
-      translateX: "5vw",
-      duration: 8,
+      initialX: `${Math.random() * 15 + 5}vw`, // Random 5-20%
+      translateX: `${Math.random() * 15 + 5}vw`,
+      duration: Math.random() * 3 + 7, // Random 7-10s
+      repeatDelay: 0,
+      delay: 0, // No delay - start immediately
+      className: "h-4 sm:h-6 md:h-8",
+    },
+    {
+      initialX: `${Math.random() * 15 + 20}vw`, // Random 20-35%
+      translateX: `${Math.random() * 15 + 20}vw`,
+      duration: Math.random() * 3 + 8,
       repeatDelay: 0,
       delay: 0,
-      className: "h-6 sm:h-8",
+      className: "h-3 sm:h-5 md:h-7",
     },
     {
-      initialX: "15vw",
-      translateX: "15vw",
-      duration: 9,
+      initialX: `${Math.random() * 15 + 35}vw`, // Random 35-50%
+      translateX: `${Math.random() * 15 + 35}vw`,
+      duration: Math.random() * 3 + 6,
       repeatDelay: 0,
-      delay: 0.3,
-      className: "h-4 sm:h-6",
+      delay: 0,
+      className: "h-5 sm:h-7 md:h-9",
     },
     {
-      initialX: "25vw",
-      translateX: "25vw",
-      duration: 10,
+      initialX: `${Math.random() * 15 + 50}vw`, // Random 50-65%
+      translateX: `${Math.random() * 15 + 50}vw`,
+      duration: Math.random() * 3 + 9,
       repeatDelay: 0,
-      delay: 0.6,
-      className: "h-5 sm:h-7",
-    },
-
-    // Group 2 - Center (5 beams) 35-65%
-    {
-      initialX: "35vw",
-      translateX: "35vw",
-      duration: 7,
-      repeatDelay: 0,
-      delay: 0.9,
-      className: "h-8 sm:h-10",
+      delay: 0,
+      className: "h-4 sm:h-6 md:h-8",
     },
     {
-      initialX: "42.5vw",
-      translateX: "42.5vw",
-      duration: 11,
+      initialX: `${Math.random() * 15 + 65}vw`, // Random 65-80%
+      translateX: `${Math.random() * 15 + 65}vw`,
+      duration: Math.random() * 3 + 7,
       repeatDelay: 0,
-      delay: 1.2,
-      className: "h-6 sm:h-8",
+      delay: 0,
+      className: "h-6 sm:h-8 md:h-10",
     },
     {
-      initialX: "50vw",
-      translateX: "50vw",
-      duration: 9,
+      initialX: `${Math.random() * 15 + 80}vw`, // Random 80-95%
+      translateX: `${Math.random() * 15 + 80}vw`,
+      duration: Math.random() * 3 + 8,
       repeatDelay: 0,
-      delay: 1.5,
-      className: "h-7 sm:h-9",
+      delay: 0,
+      className: "h-3 sm:h-5 md:h-7",
+    },
+    
+    // Additional beams for larger screens (hidden on mobile)
+    {
+      initialX: `${Math.random() * 10 + 10}vw`, // Random 10-20%
+      translateX: `${Math.random() * 10 + 10}vw`,
+      duration: Math.random() * 3 + 6,
+      repeatDelay: 0,
+      delay: 0,
+      className: "hidden sm:block h-5 md:h-8",
     },
     {
-      initialX: "57.5vw",
-      translateX: "57.5vw",
-      duration: 8,
+      initialX: `${Math.random() * 10 + 30}vw`, // Random 30-40%
+      translateX: `${Math.random() * 10 + 30}vw`,
+      duration: Math.random() * 3 + 9,
       repeatDelay: 0,
-      delay: 1.8,
-      className: "h-4 sm:h-6",
+      delay: 0,
+      className: "hidden sm:block h-4 md:h-6",
     },
     {
-      initialX: "65vw",
-      translateX: "65vw",
-      duration: 12,
+      initialX: `${Math.random() * 10 + 55}vw`, // Random 55-65%
+      translateX: `${Math.random() * 10 + 55}vw`,
+      duration: Math.random() * 3 + 7,
       repeatDelay: 0,
-      delay: 2.1,
-      className: "h-5 sm:h-7",
-    },
-
-    // Group 3 - Right edge (3 beams) 75-95%
-    {
-      initialX: "75vw",
-      translateX: "75vw",
-      duration: 10,
-      repeatDelay: 0,
-      delay: 2.4,
-      className: "h-8 sm:h-12",
+      delay: 0,
+      className: "hidden md:block h-6 md:h-9", // Desktop only
     },
     {
-      initialX: "85vw",
-      translateX: "85vw",
-      duration: 11,
+      initialX: `${Math.random() * 10 + 75}vw`, // Random 75-85%
+      translateX: `${Math.random() * 10 + 75}vw`,
+      duration: Math.random() * 3 + 8,
       repeatDelay: 0,
-      delay: 2.7,
-      className: "h-5 sm:h-7",
-    },
-    {
-      initialX: "95vw",
-      translateX: "95vw",
-      duration: 9,
-      repeatDelay: 0,
-      delay: 3.0,
-      className: "h-6 sm:h-8",
+      delay: 0,
+      className: "hidden md:block h-5 md:h-7", // Desktop only
     },
   ];
 
