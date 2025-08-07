@@ -15,15 +15,15 @@ const ovo = Ovo({
 
 export const metadata = {
   title: "Mir Ahnaf Ali - Full Stack Software Engineer",
-  description: "Mir Ahnaf Ali - Computer Science student at UMass Boston specializing in full-stack development, machine learning, and software engineering.",
-  keywords: "Mir Ahnaf Ali, Software Engineer, Full Stack Developer, Computer Science, UMass Boston",
+  description: "Mir Ahnaf Ali - Computer Science student at UMass Boston specializing in full-stack development, machine learning, and software engineering. Explore my projects and GitHub repositories.",
+  keywords: "Mir Ahnaf Ali, Software Engineer, Full Stack Developer, Computer Science, UMass Boston, GitHub, Projects, Python, React, Next.js",
   author: "Mir Ahnaf Ali",
   
   openGraph: {
     title: "Mir Ahnaf Ali - Full Stack Software Engineer",
-    description: "Computer Science student at UMass Boston specializing in full-stack development and software engineering",
+    description: "Computer Science student at UMass Boston specializing in full-stack development and software engineering. Check out my GitHub projects and portfolio.",
     url: "https://mirahnaf-ali.com",
-    siteName: "Mir Ahnaf Ali",
+    siteName: "Mir Ahnaf Ali Portfolio",
     images: [
       {
         url: "https://mirahnaf-ali.com/user-image.png",

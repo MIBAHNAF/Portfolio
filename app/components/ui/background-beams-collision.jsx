@@ -10,60 +10,100 @@ export const BackgroundBeamsWithCollision = ({
 }) => {
   const { isDark } = useTheme();
 
-  // Reduced beams for subtle effect and better performance
+  // Optimized beams for all screen sizes using viewport units
   const beams = [
-    // Group 1 - Left side (2 beams)
+    // Group 1 - Left edge (3 beams) 5-25%
     {
-      initialX: 100,
-      translateX: 100,
+      initialX: "5vw",
+      translateX: "5vw",
       duration: 8,
-      repeatDelay: 6,
+      repeatDelay: 0,
       delay: 0,
-      className: "h-8",
+      className: "h-6 sm:h-8",
     },
     {
-      initialX: 300,
-      translateX: 300,
-      duration: 10,
-      repeatDelay: 8,
-      delay: 2,
-      className: "h-6",
-    },
-
-    // Group 2 - Center (2 beams)
-    {
-      initialX: 600,
-      translateX: 600,
+      initialX: "15vw",
+      translateX: "15vw",
       duration: 9,
-      repeatDelay: 7,
-      delay: 4,
-      className: "h-10",
+      repeatDelay: 0,
+      delay: 0.3,
+      className: "h-4 sm:h-6",
     },
     {
-      initialX: 800,
-      translateX: 800,
-      duration: 11,
-      repeatDelay: 9,
-      delay: 6,
-      className: "h-8",
+      initialX: "25vw",
+      translateX: "25vw",
+      duration: 10,
+      repeatDelay: 0,
+      delay: 0.6,
+      className: "h-5 sm:h-7",
     },
 
-    // Group 3 - Right side (2 beams)
+    // Group 2 - Center (5 beams) 35-65%
     {
-      initialX: 1100,
-      translateX: 1100,
+      initialX: "35vw",
+      translateX: "35vw",
       duration: 7,
-      repeatDelay: 5,
-      delay: 8,
-      className: "h-12",
+      repeatDelay: 0,
+      delay: 0.9,
+      className: "h-8 sm:h-10",
     },
     {
-      initialX: 1300,
-      translateX: 1300,
+      initialX: "42.5vw",
+      translateX: "42.5vw",
+      duration: 11,
+      repeatDelay: 0,
+      delay: 1.2,
+      className: "h-6 sm:h-8",
+    },
+    {
+      initialX: "50vw",
+      translateX: "50vw",
+      duration: 9,
+      repeatDelay: 0,
+      delay: 1.5,
+      className: "h-7 sm:h-9",
+    },
+    {
+      initialX: "57.5vw",
+      translateX: "57.5vw",
+      duration: 8,
+      repeatDelay: 0,
+      delay: 1.8,
+      className: "h-4 sm:h-6",
+    },
+    {
+      initialX: "65vw",
+      translateX: "65vw",
       duration: 12,
-      repeatDelay: 10,
-      delay: 10,
-      className: "h-6",
+      repeatDelay: 0,
+      delay: 2.1,
+      className: "h-5 sm:h-7",
+    },
+
+    // Group 3 - Right edge (3 beams) 75-95%
+    {
+      initialX: "75vw",
+      translateX: "75vw",
+      duration: 10,
+      repeatDelay: 0,
+      delay: 2.4,
+      className: "h-8 sm:h-12",
+    },
+    {
+      initialX: "85vw",
+      translateX: "85vw",
+      duration: 11,
+      repeatDelay: 0,
+      delay: 2.7,
+      className: "h-5 sm:h-7",
+    },
+    {
+      initialX: "95vw",
+      translateX: "95vw",
+      duration: 9,
+      repeatDelay: 0,
+      delay: 3.0,
+      className: "h-6 sm:h-8",
     },
   ];
 
@@ -96,12 +136,12 @@ const BeamElement = ({ beamOptions = {} }) => {
     <motion.div
       animate="animate"
       initial={{
-        translateY: "-200px",
+        translateY: "-500px", // Start much further off-screen above the website
         translateX: beamOptions.initialX || "0px",
       }}
       variants={{
         animate: {
-          translateY: "calc(100vh + 1000px)", // Extended distance to pass through entire website
+          translateY: "calc(100vh + 1200px)", // Extended distance to pass through entire website
           translateX: beamOptions.translateX || "0px",
         },
       }}

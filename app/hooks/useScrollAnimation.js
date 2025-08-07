@@ -1,8 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 
 export const useScrollAnimation = (options = {}) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
+
+  // Memoize options to prevent unnecessary re-renders
+  const memoizedOptions = useMemo(() => ({
+    threshold: 0.1, // Trigger when 10% of element is visible
+    rootMargin: '50px 0px -50px 0px', // Start animation slightly before element comes into view
+    ...options
+  }), [options]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -13,23 +20,22 @@ export const useScrollAnimation = (options = {}) => {
           observer.unobserve(entry.target);
         }
       },
-      {
-        threshold: 0.1, // Trigger when 10% of element is visible
-        rootMargin: '50px 0px -50px 0px', // Start animation slightly before element comes into view
-        ...options
-      }
+      memoizedOptions
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    // Store ref.current in a variable to avoid stale closure
+    const currentRef = ref.current;
+
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
-  }, []);
+  }, [memoizedOptions]);
 
   return [ref, isVisible];
 };
