@@ -2,14 +2,14 @@ import Link from 'next/link'
 
 export const metadata = {
   title: 'Data & Links - Mir Ahnaf Ali | GitHub & Project Information',
-  description: 'Quick access to Mir Ahnaf Ali\'s GitHub repositories, project links, and basic information. Full Stack Software Engineer and Computer Science student at UMass Boston.',
+  description: 'Quick access to Mir Ahnaf Ali\'s GitHub repositories, project links, and basic information. IT Systems and Security Analyst and Computer Science student at UMass Boston.',
   keywords: 'Mir Ahnaf Ali, GitHub, Projects, Data, Links, Software Engineer, Computer Science, UMass Boston',
 }
 
 export default function DataPage() {
   const basicInfo = {
     name: "Mir Ahnaf Ali",
-    title: "Full Stack Software Engineer & CS Student",
+    title: "IT Systems and Security Analyst & CS Student",
     university: "UMass Boston",
     major: "Computer Science",
     github: "https://github.com/MIBAHNAF",

@@ -63,6 +63,10 @@ import html from './html.png';
 import user1 from './user-image-1.png';
 import user2 from './user-image-2.png';
 import user3 from './user-image-3.png';
+import A from './A.png';
+import Sec from './Sec.png';
+import web from './web.png';
+import poster from './poster.png';
 
 export const assets = {
     user_image,
@@ -130,6 +134,10 @@ export const assets = {
     user1,
     user2,
     user3,
+    A,
+    Sec,
+    web,
+    poster,
 };
 
 export const workData = [
@@ -165,7 +173,7 @@ export const serviceData = [
 export const infoList = [
     { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'Python, JavaScript, Java, SQL, VBA, C' },
     { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'Computer Science,BS UMass Boston ' },
-    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: '6 Real World Projects' }
+    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: '8 + Real World Projects' }
 ];
 
 
@@ -214,21 +222,9 @@ export const projectsData = [
     languages: ['python'],
   },
   {
-    name: 'Demo Construction Website',
-    type: 'Fellowship Project',
-    hours: 40,
-    languages: ['js', 'html', 'css'],
-  },
-  {
     name: 'Hallucinations - Horror Game',
     type: 'Game Development',
     hours: 80,
     languages: ['unity', 'csharp'],
-  },
-  {
-    name: 'Portfolio Website',
-    type: 'Web Development',
-    hours: 70,
-    languages: ['js', 'css'],
   },
 ];

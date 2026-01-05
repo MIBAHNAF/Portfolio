@@ -14,13 +14,13 @@ const ovo = Ovo({
 });
 
 export const metadata = {
-  title: "Mir Ahnaf Ali - Full Stack Software Engineer",
+  title: "Mir Ahnaf Ali - IT Systems and Security Analyst",
   description: "Mir Ahnaf Ali - Computer Science student at UMass Boston specializing in full-stack development, machine learning, and software engineering. Explore my projects and GitHub repositories.",
-  keywords: "Mir Ahnaf Ali, Software Engineer, Full Stack Developer, Computer Science, UMass Boston, GitHub, Projects, Python, React, Next.js",
+  keywords: "Mir Ahnaf Ali, IT Systems and Security Analyst, Security Analyst, Computer Science, UMass Boston, GitHub, Projects, Python, React, Next.js, Cybersecurity",
   author: "Mir Ahnaf Ali",
   
   openGraph: {
-    title: "Mir Ahnaf Ali - Full Stack Software Engineer",
+    title: "Mir Ahnaf Ali - IT Systems and Security Analyst",
     description: "Computer Science student at UMass Boston specializing in full-stack development and software engineering. Check out my GitHub projects and portfolio.",
     url: "https://mirahnaf-ali.com",
     siteName: "Mir Ahnaf Ali Portfolio",
@@ -29,7 +29,7 @@ export const metadata = {
         url: "https://mirahnaf-ali.com/user-image.png",
         width: 1200,
         height: 630,
-        alt: "Mir Ahnaf Ali - Software Engineer",
+        alt: "Mir Ahnaf Ali - IT Specialist",
       },
     ],
     locale: "en_US",

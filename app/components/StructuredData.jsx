@@ -17,7 +17,7 @@ export default function StructuredData() {
     },
     "knowsAbout": [
       "Software Engineering",
-      "Full Stack Development",
+      "IT Systems and Security",
       "Machine Learning",
       "Web Development",
       "Python",

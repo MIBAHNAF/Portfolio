@@ -115,9 +115,9 @@ function About() {
 
         <div ref={descRef} className={`flex-1 w-full ${slideInRight} ${descVisible ? slideInRightVisible : slideInRightHidden}`}>
           <p className={`mb-6 sm:mb-8 lg:mb-10 max-w-2xl font-Ovo text-sm sm:text-base ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-          Aspiring Software Engineer with a 3.96 GPA from UMass Boston, driven by curiosity and a love for clean, purposeful code. 
-          I build full-stack web apps using JavaScript, React, Tailwind, and Supabase. 
-          From automating attendance to crafting dynamic frontends, I bring ideas to life. Disappointment is not an option—progress always is.
+         I’m Mir Ahnaf Ali, a CS student at UMass Boston (3.96 GPA) pursuing Cybersecurity / Security Analyst roles. 
+         I work as an IT Systems & Security Analyst, hold CompTIA Security+, 
+         and build secure full-stack apps like Attendly—an NFC check-in platform designed around authentication, authorized devices, and clean data handling.
           </p>
           <div ref={infoRef} className={`${fadeInUp} ${infoVisible ? fadeInUpVisible : fadeInUpHidden}`}>
             <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 flex-wrap gap-4 sm:gap-6 max-w-2xl items-stretch relative'>

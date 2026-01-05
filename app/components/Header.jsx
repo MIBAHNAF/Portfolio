@@ -18,10 +18,11 @@ function Header() {
 
   // Typewriter words array
   const titleWords = [
-    "Software Engineer",
-    "IT Systems Specialist", 
+    "Security Analyst",
+    "IT Systems Specialist",
+    "Cloud Analyst",
     "Oracle Research Fellow",
-    "IT Security Analyst"
+    "IT Systems and Security Analyst"
   ];
 
   return (
@@ -43,7 +44,9 @@ function Header() {
             cursorClassName={`${isDark ? 'bg-white' : 'bg-black'}`}
           />
         </h1>
-        <p ref={descRef} className={`relative z-10 max-w-2xl mx-auto font-Ovo ${isDark ? 'text-gray-300' : 'text-gray-700'} ${fadeInUp} ${descVisible ? fadeInUpVisible : fadeInUpHidden}`} style={{ animationDelay: '0.6s' }}>I am a Full Stack Developer and IT Specialist based on Boston with 3+ years 
+        <p ref={descRef} className={`relative z-10 max-w-2xl mx-auto font-Ovo ${isDark ? 'text-gray-300' : 'text-gray-700'} ${fadeInUp} 
+          ${descVisible ? fadeInUpVisible : fadeInUpHidden}`} style={{ animationDelay: '0.6s' }}>
+            I am an IT Systems and Security Analyst based on Boston with 3+ years 
             of experience in UMass Boston and Oracle.
         </p>
         <div ref={buttonsRef} className={`relative z-10 flex flex-col sm:flex-row gap-4 mt-4 ${fadeInUp} ${buttonsVisible ? fadeInUpVisible : fadeInUpHidden}`} style={{ animationDelay: '0.8s' }}>
