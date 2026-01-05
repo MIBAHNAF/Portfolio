@@ -24,16 +24,13 @@ export const metadata = {
     description: "Computer Science student at UMass Boston specializing in full-stack development and software engineering. Check out my GitHub projects and portfolio.",
     url: "https://mirahnaf-ali.com",
     siteName: "Mir Ahnaf Ali Portfolio",
-    images: [
-      {
-        url: "https://mirahnaf-ali.com/user-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Mir Ahnaf Ali - IT Specialist",
-      },
-    ],
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Mir Ahnaf Ali - IT Systems and Security Analyst",
+    description: "Computer Science student at UMass Boston specializing in full-stack development and software engineering.",
   },
   robots: {
     index: true,

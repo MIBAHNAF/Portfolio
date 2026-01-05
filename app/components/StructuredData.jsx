@@ -3,17 +3,16 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Mir Ahnaf Ali",
-    "jobTitle": "Software Engineer",
-    "description": "Computer Science student at UMass Amherst specializing in full-stack development, machine learning, and software engineering",
+    "jobTitle": "IT Systems and Security Analyst",
+    "description": "Computer Science student at UMass Boston specializing in full-stack development, cybersecurity, and software engineering",
     "url": "https://mirahnaf-ali.com",
-    "image": "https://mirahnaf-ali.com/user-image.png",
     "sameAs": [
       "https://github.com/MIBAHNAF",
       "https://linkedin.com/in/mirahnafali"
     ],
     "alumniOf": {
       "@type": "CollegeOrUniversity",
-      "name": "University of Massachusetts Bosoton",
+      "name": "University of Massachusetts Boston",
     },
     "knowsAbout": [
       "Software Engineering",
