@@ -18,11 +18,12 @@ function Header() {
 
   // Typewriter words array
   const titleWords = [
-    "Security Analyst",
     "IT Systems Specialist",
+    "Security Analyst",
     "Cloud Analyst",
     "Oracle Research Fellow",
-    "IT Systems and Security Analyst"
+    "Systems Administrator",
+    "Full Stack Developer"
   ];
 
   return (
@@ -46,23 +47,23 @@ function Header() {
         </h1>
         <p ref={descRef} className={`relative z-10 max-w-2xl mx-auto font-Ovo ${isDark ? 'text-gray-300' : 'text-gray-700'} ${fadeInUp} 
           ${descVisible ? fadeInUpVisible : fadeInUpHidden}`} style={{ animationDelay: '0.6s' }}>
-            I am an IT Systems and Security Analyst based on Boston with 3+ years 
+            I am an IT Systems - Security Analyst and Full Stack developer based on Boston with 3+ years 
             of experience in UMass Boston and Oracle.
         </p>
         <div ref={buttonsRef} className={`relative z-10 flex flex-col sm:flex-row gap-4 mt-4 ${fadeInUp} ${buttonsVisible ? fadeInUpVisible : fadeInUpHidden}`} style={{ animationDelay: '0.8s' }}>
             <a href = "#contact" 
             className='px-10 py-3 border border-gray-500 rounded-full bg-black text-white flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-md'
             >contact me <Image src = {assets.right_arrow_white} alt='' className='w-4'/></a>
-            <a href = {getGoogleDriveDownloadLink(resumeLinks.SWE_RESUME_ID)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className='px-10 py-3 border rounded-full border-gray-500 bg-white text-black flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-md min-w-[180px]'
-            >SWE Resume <Image src = {assets.download_icon} alt='' className='w-4'/></a>
             <a href = {getGoogleDriveDownloadLink(resumeLinks.ITS_RESUME_ID)}
             target="_blank"
             rel="noopener noreferrer"
             className='px-10 py-3 border rounded-full border-gray-500 bg-white text-black flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-md min-w-[180px]'
             >ITS Resume <Image src = {assets.download_icon} alt='' className='w-4'/></a>
+            <a href = {getGoogleDriveDownloadLink(resumeLinks.SWE_RESUME_ID)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className='px-10 py-3 border rounded-full border-gray-500 bg-white text-black flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-md min-w-[180px]'
+            >SWE Resume <Image src = {assets.download_icon} alt='' className='w-4'/></a>
         </div>
       
     </div>
