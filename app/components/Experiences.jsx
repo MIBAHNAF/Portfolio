@@ -159,7 +159,45 @@ function Experiences() {
   const [titleRef, titleInView] = useScrollAnimation();
   const [contentRef, contentInView] = useScrollAnimation();
 
-  // Intersection Observer for scroll-based activation
+  // Scroll-based activation for small screens (iPad Air and below - single column)
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if screen is iPad Air or below (1024px and below)
+      const isSmallScreen = window.innerWidth <= 1024;
+      
+      if (!isSmallScreen) return; // Only apply on small screens
+
+      cardRefs.current.forEach((cardRef, index) => {
+        if (!cardRef) return;
+
+        const rect = cardRef.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        
+        // Get the title element (h3) within the card
+        const titleElement = cardRef.querySelector('h3');
+        if (!titleElement) return;
+        
+        const titleRect = titleElement.getBoundingClientRect();
+        
+        // Calculate if title is within 5% of the top of viewport
+        const threshold = viewportHeight * 0.05;
+        
+        // Lock onto this section when title is within 5% from top
+        if (titleRect.top >= 0 && titleRect.top <= threshold) {
+          setActiveExperience(index);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Intersection Observer for larger screens (desktop - two column layout)
   useEffect(() => {
     const observers = cardRefs.current.map((cardRef, index) => {
       if (!cardRef) return null;
@@ -167,6 +205,10 @@ function Experiences() {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
+            // Only apply on larger screens
+            const isLargeScreen = window.innerWidth > 1024;
+            if (!isLargeScreen) return;
+
             if (entry.isIntersecting) {
               const rect = entry.boundingClientRect;
               const viewportHeight = window.innerHeight;
