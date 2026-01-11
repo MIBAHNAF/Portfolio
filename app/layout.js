@@ -2,6 +2,7 @@ import { Outfit, Ovo } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { BackgroundBeamsWithCollision } from "./components/ui/background-beams-collision";
 import StructuredData from "./components/StructuredData";
 
@@ -62,6 +63,7 @@ export default function RootLayout({ children }) {
           </div>
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
