@@ -24,5 +24,5 @@ export const getGoogleDrivePreviewLink = (fileId) => {
 // Backup: Direct download links (test these first)
 export const directDownloadLinks = {
   SWE_RESUME: "https://drive.google.com/uc?export=download&id=18qWS3yNhBxc9kouG8HBW8XW7th_sTzFi",
-  ITS_RESUME: "https://drive.google.com/uc?export=download&id=16nL84-RkUaTMZtuLim4t55q1-0sBaVR7"
+  ITS_RESUME: "https://drive.google.com/uc?export=download&id=1CoHBw_NvpXFxBkDnDVqu8T83n5_IoNMr"
 };
