@@ -58,12 +58,7 @@ function Header() {
             target="_blank"
             rel="noopener noreferrer"
             className='px-10 py-3 border rounded-full border-gray-500 bg-white text-black flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-md min-w-[180px]'
-            >ITS Resume <Image src = {assets.download_icon} alt='' className='w-4'/></a>
-            <a href = {getGoogleDriveDownloadLink(resumeLinks.SWE_RESUME_ID)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className='px-10 py-3 border rounded-full border-gray-500 bg-white text-black flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-md min-w-[180px]'
-            >SWE Resume <Image src = {assets.download_icon} alt='' className='w-4'/></a>
+            >Resume <Image src = {assets.download_icon} alt='' className='w-4'/></a>
         </div>
       
     </div>

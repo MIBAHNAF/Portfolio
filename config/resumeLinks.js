@@ -7,7 +7,6 @@
 // 3. Copy the FILE_ID part and paste below
 
 export const resumeLinks = {
-  SWE_RESUME_ID: "18qWS3yNhBxc9kouG8HBW8XW7th_sTzFi", // Extracted file ID from your Google Drive link
   ITS_RESUME_ID: "1CoHBw_NvpXFxBkDnDVqu8T83n5_IoNMr", // Extracted file ID from your Google Drive link
 };
 
@@ -23,6 +22,5 @@ export const getGoogleDrivePreviewLink = (fileId) => {
 
 // Backup: Direct download links (test these first)
 export const directDownloadLinks = {
-  SWE_RESUME: "https://drive.google.com/uc?export=download&id=18qWS3yNhBxc9kouG8HBW8XW7th_sTzFi",
   ITS_RESUME: "https://drive.google.com/uc?export=download&id=1CoHBw_NvpXFxBkDnDVqu8T83n5_IoNMr"
 };
