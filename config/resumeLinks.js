@@ -8,7 +8,7 @@
 
 export const resumeLinks = {
   SWE_RESUME_ID: "18qWS3yNhBxc9kouG8HBW8XW7th_sTzFi", // Extracted file ID from your Google Drive link
-  ITS_RESUME_ID: "16nL84-RkUaTMZtuLim4t55q1-0sBaVR7", // Extracted file ID from your Google Drive link
+  ITS_RESUME_ID: "1CoHBw_NvpXFxBkDnDVqu8T83n5_IoNMr", // Extracted file ID from your Google Drive link
 };
 
 // Helper function to generate Google Drive download link
