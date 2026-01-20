@@ -64,7 +64,7 @@ function Contact() {
       id='contact' 
       className={`w-full px-3 sm:px-6 md:px-8 lg:px-[12%] py-8 sm:py-10 scroll-mt-20 relative ${isDark ? 'bg-black' : ''}`}
       style={isDark ? {} : {
-        backgroundImage: 'url(/footer-bg-color.png)',
+        backgroundImage: `url(${assets.footer_bg_color.src})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'

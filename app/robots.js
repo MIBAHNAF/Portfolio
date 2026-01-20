@@ -4,7 +4,7 @@ export default function robots() {
       {
         userAgent: '*',
         allow: ['/user-image.png', '/user-image-*.png'],
-        disallow: ['/private/', '/footer-bg-color.png'],
+        disallow: ['/private/'],
       }
     ],
     sitemap: 'https://mirahnaf-ali.com/sitemap.xml',
