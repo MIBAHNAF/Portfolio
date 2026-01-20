@@ -3,7 +3,7 @@ export default function robots() {
     rules: [
       {
         userAgent: '*',
-        allow: ['/user-image.png', '/user-image-*.png'],
+        allow: ['/user-image.png', '/user-image1.png'],
         disallow: ['/private/'],
       }
     ],
