@@ -57,6 +57,73 @@ function Projects() {
   const projects = [
     {
       category: "Personal Project",
+      title: "Mini-SOC Home Lab",
+      src: "/wazuhmain.png",
+      content: (
+        <div>
+          <p className="text-gray-800 dark:text-neutral-400 text-sm sm:text-base md:text-lg font-sans mb-6 sm:mb-8">
+            Built a home Security Operations Center using Wazuh SIEM on Ubuntu VMs in VMware, simulating real-world threat detection and incident response workflows with centralized log ingestion, alert triage, and rule-based detection.
+          </p>
+
+          <div className="mb-6 sm:mb-8">
+            <h4 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-neutral-200 mb-3 sm:mb-4">Key Features:</h4>
+            <ul className="text-gray-800 dark:text-neutral-400 space-y-1 sm:space-y-2 text-sm sm:text-base">
+              <li>• Centralized security monitoring across multiple endpoints via Wazuh manager and agents</li>
+              <li>• Log ingestion and analysis from Linux system events, auth logs, and file integrity monitoring</li>
+              <li>• Custom detection rules triggering alerts for unauthorized access, user creation, and privilege escalation</li>
+              <li>• Alert triage and incident investigation using Wazuh dashboard and event correlation</li>
+              <li>• Simulated attack scenarios including brute-force SSH, local user creation, and firewall rule changes</li>
+              <li>• Documented incident reports with timeline, indicators of compromise, and remediation steps</li>
+            </ul>
+          </div>
+
+          <div className="mb-6 sm:mb-8">
+            <h4 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-neutral-200 mb-3 sm:mb-4">Technologies Used:</h4>
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              {['Wazuh SIEM', 'Ubuntu', 'VMware', 'Python', 'Bash', 'Linux', 'File Integrity Monitoring'].map((tech) => (
+                <span key={tech} className="px-2 sm:px-3 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full text-xs sm:text-sm">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 mb-8 min-w-0">
+            <img
+              src="/wazuh1.png"
+              alt="Wazuh SIEM Dashboard"
+              height="500"
+              width="500"
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full min-w-0 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <img
+              src="/wazuh2.png"
+              alt="Security Alert Analysis"
+              height="500"
+              width="500"
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full min-w-0 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+          </div>
+
+          <div className="flex gap-3 sm:gap-4">
+            <a
+              href="https://github.com/MIBAHNAF/mini-soc-home-lab"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 font-medium rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 hover:transform hover:scale-105 hover:shadow-md transition-all duration-300 text-sm sm:text-base"
+            >
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+              </svg>
+              <span className="hidden sm:inline">GitHub</span>
+              <span className="sm:hidden">GitHub</span>
+            </a>
+          </div>
+        </div>
+      ),
+    },
+    {
+      category: "Personal Project",
       title: "Attendly",
       src: "/attendlymain.png",
       content: (
@@ -489,83 +556,6 @@ function Projects() {
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
               </svg>
               Showcase
-            </a>
-          </div>
-        </div>
-      ),
-    },
-    {
-      category: "Personal Project",
-      title: "Portfolio Website",
-      src: "/portfolio-1.png",
-      content: (
-        <div>
-          <p className="text-gray-800 dark:text-neutral-400 text-base md:text-lg font-sans mb-8">
-            This very portfolio website you're viewing! Built with modern web technologies including Next.js, React, Tailwind CSS, and Framer Motion. Features responsive design, dark mode support, smooth animations, and an interactive project carousel using Aceternity UI components (~70 hours development time).
-          </p>
-          
-          <div className="mb-8">
-            <h4 className="text-lg font-semibold text-gray-800 dark:text-neutral-200 mb-4">Key Features:</h4>
-            <ul className="text-gray-800 dark:text-neutral-400 space-y-2">
-              <li>• Fully responsive design</li>
-              <li>• Dark/Light mode toggle</li>
-              <li>• Interactive project carousel</li>
-              <li>• Smooth scroll animations</li>
-              <li>• Academic section with transcript download</li>
-              <li>• Contact form integration</li>
-            </ul>
-          </div>
-
-          <div className="mb-8">
-            <h4 className="text-lg font-semibold text-gray-800 dark:text-neutral-200 mb-4">Technologies Used:</h4>
-            <div className="flex flex-wrap gap-2">
-              {['Next.js', 'React', 'Tailwind CSS', 'Framer Motion', 'Aceternity UI', 'JavaScript'].map((tech) => (
-                <span key={tech} className="px-3 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full text-sm">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 mb-8">
-            <img
-              src="/portfolio-1.png"
-              alt="Portfolio Homepage"
-              height="500"
-              width="500"
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-            <img
-              src="/portfolio-2.png"
-              alt="Portfolio Projects Section"
-              height="500"
-              width="500"
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-          </div>
-
-          <div className="flex gap-4">
-            <a 
-              href="https://github.com/MIBAHNAF/Portfolio" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 font-medium rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-              </svg>
-              GitHub
-            </a>
-            <a 
-              href="https://mirahnaf-ali.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 font-medium rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 hover:transform hover:scale-105 hover:shadow-md transition-all duration-300"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
-              Website
             </a>
           </div>
         </div>

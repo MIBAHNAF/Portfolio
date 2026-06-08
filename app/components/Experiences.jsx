@@ -7,17 +7,17 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 // Experience data
 const experiences = [
   {
-    period: 'Jun 2024 - Present',
-    role: 'IT Systems and Security Analyst',
-    company: 'UMASS',
+    period: 'Jun 2024 - Jun 2026',
+    role: 'IT Support Analyst',
+    company: 'UMass Boston',
     location: 'Boston, MA',
     points: [
-      'Provided Tier-2 support to 100+ students/faculty across Windows, macOS, and mobile; resolved 50+ incidents (logins, installs, printing) with proper escalation.',
-      'Supported IAM in Active Directory + Azure AD: completed 15+ secure password resets/week, performed 10+ account assessments/week (locked/disabled/compromised), and assisted with role assignment/monitoring.',
-      'Resolved 100+ ServiceNow tickets end-to-end with clear documentation and root-cause troubleshooting; improved resolution efficiency by 20%.',
-      'Troubleshot secure access and connectivity: cleared 30+ Wi-Fi/VPN incidents/month and configured Zoom/MS Teams/VPN for reliable remote learning access.',
-      'Delivered phishing awareness guidance and safe-account practices, contributing to a 10% drop in reported phishing incidents.',
-      'Managed accounts across multiple platforms while maintaining data integrity and applying least-privilege/verification best practices.',
+      'Supported 100+ users across 2+ years in a ticket-driven environment, resolving 50+ technical and access issues monthly on Windows, macOS, and remote-access systems.',
+      'Managed identity and access workflows in Active Directory and Azure AD, completing 15+ password resets and 10+ account reviews weekly to maintain secure access and policy compliance.',
+      'Closed 100+ ServiceNow tickets and improved resolution speed by 20% through repeatable remediation steps, clearer documentation, and organized workflow management.',
+      'Resolved 30+ Wi-Fi and VPN issues each month, restoring secure connectivity and reducing downtime for end users.',
+      'Supported MFA/SSO troubleshooting and onboarding access requests, resolving 20+ access issues while reinforcing least-privilege and secure account setup practices.',
+      'Assisted with phishing-related support and security concerns by documenting reports in Wazuh SIEM, guiding users through safe practices, and escalating higher-risk cases — reducing incident response time and protecting user accounts.',
     ],
     certificates: [
       {
@@ -37,16 +37,16 @@ const experiences = [
     ]
   },
   {
-    period: 'Sept 2023 - May 2024',
+    period: 'Sep 2023 - May 2024',
     role: 'Software Engineering Research Fellow',
-    company: 'ORACLE / UMASS',
+    company: 'Oracle',
     location: 'Boston, MA',
     points: [
-      'Built a Python simulation pipeline for reaction–diffusion + discrete fluctuations; analyzed extinction behavior across L = 0–60 and x = −15 to 15.',
-      'Quantified extinction probability/variance across multiple parameter regimes, producing 3+ publication-quality figures for a research poster.',
-      'Automated result aggregation and summary statistics in macro-enabled Excel, reducing manual analysis time by 30%+.',
-      'Collaborated with Professor Niraj Kumar through weekly meetings (10+ total); translated math/physics assumptions into testable computational experiments.',
-      'Presented findings at the CSM Student Success Showcase as part of an Oracle-supported undergraduate fellowship.',
+      'Built a Python-based analysis workflow to evaluate complex data across multiple parameter sets, producing structured outputs for technical review and presentation.',
+      'Generated 3+ publication-quality figures and organized findings into clear deliverables for a formal research poster.',
+      'Automated Excel-based data aggregation and summary reporting, reducing manual analysis time by 30%+ and improving reporting consistency.',
+      'Collaborated in 10+ weekly meetings with faculty to review results, refine methods, and align technical deliverables with research goals.',
+      'Presented findings at the CSM Student Success Showcase, communicating technical results to a broader audience.',
     ],
     certificates: [
       {
@@ -60,17 +60,16 @@ const experiences = [
     certificateTitle: 'Related Posters'
   },
   {
-    period: 'Sept 2023 - May 2024',
-    role: 'Software Engineering Teaching Assistant',
-    company: 'UMASS',
+    period: 'Sep 2023 - May 2024',
+    role: 'IT Teaching Assistant',
+    company: 'UMass Boston',
     location: 'Boston, MA',
     points: [
-      'Tutored 20+ students in Java and Python, focusing on programming fundamentals and real-world debugging.',
-      'Guided students through basic Unix server setup, including account access, shell commands, and file navigation.',
-      'Taught core terminal operations like chmod, scp, nano, and basic Bash scripting to help students build confidence.',
-      'Assisted students in installing IDEs and programming tools like PyCharm, resolving config and path-related errors.',
-      'Provided tailored support to address app installation issues, compile-time errors, and platform-specific bugs.',
-      'Helped improve student performance, with many seeing 15–20% grade improvement in the course assessments.',
+      'Supported 20+ students in Java, Python, and C/C++, translating technical concepts into clear guidance tailored to different experience levels, enabling students to complete assignments with fewer clarification requests.',
+      'Guided students through Unix/Linux basics, account access, and command-line workflows, helping them complete technical assignments more independently.',
+      'Provided one-on-one technical support for debugging, environment setup, and workflow issues, improving clarity and reducing delays in assignment completion.',
+      'Reinforced structured troubleshooting and documentation habits, helping students develop stronger technical problem-solving workflows.',
+      'Helped improve student outcomes, with many achieving 15–20% grade improvement in course assessments.',
     ],
   },
   {

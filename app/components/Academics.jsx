@@ -9,374 +9,353 @@ function Academics() {
   const { isDark } = useTheme();
   const [activeScholarship, setActiveScholarship] = useState(null);
   const scholarshipRefs = useRef([]);
-  
-  // Animation refs and hooks
-  const [titleRef, titleInView] = useScrollAnimation();
-  const [schoolRef, schoolInView] = useScrollAnimation();
-  const [courseworkRef, courseworkInView] = useScrollAnimation();
 
-  // Google Drive file ID for transcript (extracted from your link)
+  const [titleRef, titleInView] = useScrollAnimation();
+  const [rightRef, rightInView] = useScrollAnimation();
+
   const TRANSCRIPT_FILE_ID = "19l-V0HF4cEurXbQQngUxX2iOuAaTQuN6";
 
-  // Intersection Observer for scroll-based activation
   useEffect(() => {
-    // Observer for scholarships
-    const observers = scholarshipRefs.current.map((scholarshipRef, index) => {
-      if (!scholarshipRef) return null;
-
+    const observers = scholarshipRefs.current.map((ref, index) => {
+      if (!ref) return null;
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              // Check if the element is at the top portion of the viewport
               const rect = entry.boundingClientRect;
-              const viewportHeight = window.innerHeight;
-              const topThreshold = viewportHeight * 0.3; // Top 30% of screen
-              
-              if (rect.top <= topThreshold && rect.bottom >= 0) {
+              if (rect.top <= window.innerHeight * 0.3 && rect.bottom >= 0) {
                 setActiveScholarship(index);
               }
             }
           });
         },
-        {
-          threshold: [0.1, 0.3, 0.5, 0.7, 0.9],
-          rootMargin: '-20% 0px -60% 0px'
-        }
+        { threshold: [0.1, 0.3, 0.5, 0.7, 0.9], rootMargin: '-20% 0px -60% 0px' }
       );
-
-      observer.observe(scholarshipRef);
+      observer.observe(ref);
       return observer;
     });
-
-    return () => {
-      observers.forEach(observer => observer && observer.disconnect());
-    };
+    return () => { observers.forEach(o => o && o.disconnect()); };
   }, []);
-  
-  // School Information
-  const schoolInfo = {
-    name: "University of Massachusetts Boston",
-    location: "Boston, MA",
-    degree: "Computer Science, BS, HONORS",
-    
-    expectedGraduation: "May 2026",
-    gpa: "3.962/4.0",
-    relevantCoursework: "Advanced Algorithms, Computer Architecture, Game Programming"
-  }
 
-  // CS Courses with grades (excluding Physics, Calc, Ethics, and W/F grades)
-  const csCourses = [
-    { code: "CS 110", name: "Introduction to Computing", grade: "A", credits: 4 },
-    { code: "CS 210", name: "Intermediate Computing", grade: "A", credits: 4 },
-    { code: "CS 240", name: "Programming in C", grade: "A", credits: 4 },
-    { code: "CS 285L", name: "Social Issues and Ethics in Computing", grade: "A", credits: 4 },
-    { code: "CS 310", name: "Advanced Algorithms", grade: "B+", credits: 4 },
-    { code: "CS 341", name: "Computer Architecture & Organization", grade: "A", credits: 4 },
-    { code: "CS 461", name: "Computer Games Programming", grade: "A", credits: 4 },
-    { code: "CS 220", name: "Applied Discrete Mathematics", grade: "A", credits: 4 },
-    // Math & Science courses moved here
-    { code: "MATH 141", name: "Calculus II", grade: "A", credits: 4 },
-    { code: "MATH 260", name: "Linear Algebra", grade: "A", credits: 4 },
-    { code: "MATH 345", name: "Probability & Statistics", grade: "A", credits: 4 },
-    { code: "PHYSIC 114", name: "Fundamentals of Physics II", grade: "A", credits: 4 }
-  ]
+  const courseCategories = [
+    {
+      label: "Core CS",
+      courses: [
+        { code: "CS 110", name: "Introduction to Computing",       grade: "A"  },
+        { code: "CS 210", name: "Intermediate Computing",          grade: "A"  },
+        { code: "CS 240", name: "Programming in C",                grade: "A"  },
+        { code: "CS 220", name: "Applied Discrete Mathematics",    grade: "A"  },
+      ]
+    },
+    {
+      label: "Theory & Systems",
+      courses: [
+        { code: "CS 310", name: "Advanced Algorithms",             grade: "B+" },
+        { code: "CS 420", name: "Theory of Computation",           grade: "A"  },
+        { code: "CS 341", name: "Computer Architecture & Org",     grade: "A"  },
+        { code: "CS 444", name: "Operating Systems",               grade: "A"  },
+        { code: "CS 451", name: "Compilers",                       grade: "B+" },
+        { code: "CS 450", name: "Higher Level Languages",          grade: "A"  },
+      ]
+    },
+    {
+      label: "Applied",
+      courses: [
+        { code: "CS 410", name: "Software Engineering",            grade: "A"  },
+        { code: "CS 449", name: "Computer Security",               grade: "A"  },
+        { code: "CS 461", name: "Computer Games Programming",      grade: "A"  },
+        { code: "CS 285L", name: "Social Issues & Ethics",         grade: "A"  },
+      ]
+    },
+    {
+      label: "Mathematics",
+      courses: [
+        { code: "MATH 141",   name: "Calculus II",                 grade: "A"  },
+        { code: "MATH 260",   name: "Linear Algebra",              grade: "A"  },
+        { code: "MATH 345",   name: "Probability & Statistics",    grade: "A"  },
+        { code: "PHYSIC 114", name: "Fundamentals of Physics II",  grade: "A"  },
+      ]
+    },
+  ];
 
-  const getGradeColor = (grade) => {
-    if (grade.includes('A')) return isDark ? 'text-green-400 bg-green-900/20' : 'text-green-600 bg-green-50'
-    if (grade.includes('B')) return isDark ? 'text-blue-400 bg-blue-900/20' : 'text-blue-600 bg-blue-50'
-    if (grade.includes('C')) return isDark ? 'text-yellow-400 bg-yellow-900/20' : 'text-yellow-600 bg-yellow-50'
-    if (grade === 'In Progress') return isDark ? 'text-purple-400 bg-purple-900/20' : 'text-purple-600 bg-purple-50'
-    if (grade === 'Transfer') return isDark ? 'text-gray-400 bg-gray-700/20' : 'text-gray-600 bg-gray-50'
-    return isDark ? 'text-gray-400 bg-gray-700/20' : 'text-gray-600 bg-gray-50'
-  }
+  const allCourses = courseCategories.flatMap(c => c.courses);
+  const aCount = allCourses.filter(c => c.grade.startsWith('A')).length;
+  const bCount = allCourses.filter(c => c.grade.startsWith('B')).length;
+
+  const gradeBadge = (grade) => {
+    if (grade.startsWith('A')) return isDark ? 'text-emerald-400' : 'text-emerald-600';
+    if (grade.startsWith('B')) return isDark ? 'text-sky-400'     : 'text-sky-600';
+    return isDark ? 'text-gray-500' : 'text-gray-400';
+  };
+
+  const scholarshipYears = [
+    {
+      year: "2023 – 2024",
+      awards: [
+        { name: "Academic Recognition Award",  type: "Merit-Based",         link: null },
+        { name: "The Teehan Scholarship",      type: "Academic Excellence", link: null },
+        { name: "The Paul English Scholarship",type: "CSM Excellence",      link: "https://ai.umb.edu/about-paul-english/", refIndex: 0 },
+      ]
+    },
+    {
+      year: "2024 – 2025",
+      awards: [
+        { name: "Donohue Scholarship",         type: "Academic Merit",      link: null },
+        { name: "The Paul English Scholarship",type: "CSM Excellence",      link: "https://ai.umb.edu/about-paul-english/", refIndex: 1 },
+        { name: "National Grid Scholarship",   type: "STEM Excellence",     link: null },
+        { name: "Janus Scholarship",           type: "Academic Achievement",link: null },
+      ]
+    },
+    {
+      year: "2025 – 2026",
+      awards: [
+        { name: "Donohue Scholarship",         type: "Continued Excellence",    link: null },
+        { name: "The Paul English Scholarship",type: "CSM Excellence (3rd)",    link: "https://ai.umb.edu/about-paul-english/", refIndex: 2 },
+        { name: "Janus Scholarship",           type: "Continued Recognition",   link: null },
+      ]
+    },
+  ];
+
+  const label = (text) => (
+    <p className={`text-[10px] uppercase tracking-[0.15em] mb-1 ${isDark ? 'text-gray-400' : 'text-gray-400'}`}>{text}</p>
+  );
+
+  const rowBorder = isDark ? 'border-gray-800' : 'border-gray-100';
 
   return (
     <>
       <style jsx>{`
         @keyframes gradientShift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
+          0%   { background-position: 0% 50%; }
+          50%  { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
       `}</style>
-      <div id='Academics' className='w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-[12%] py-8 sm:py-10 scroll-mt-20'>
-      <div 
-        ref={titleRef}
-        className={`text-center transition-all duration-1000 ${titleInView ? 'fadeInUp' : 'opacity-0 translate-y-8'}`}
-      >
-        <h4 className={`mb-2 text-sm sm:text-base md:text-lg font-Ovo ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>My Education</h4>
-        <h2 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-Ovo mb-8 sm:mb-12 md:mb-16 lg:mb-20 ${isDark ? 'text-white' : 'text-gray-800'}`}>
-          Academic Background
-        </h2>
-      </div>
-      
-      <div className='max-w-6xl mx-auto space-y-6 sm:space-y-8 md:space-y-12 lg:space-y-16'>
-        
-        {/* Section 1: School Information */}
-        <div 
-          ref={schoolRef}
-          className={`rounded-lg sm:rounded-xl shadow-lg p-3 sm:p-4 md:p-6 lg:p-8 border transition-all duration-1000 delay-300 ${schoolInView ? 'slideInLeft' : 'opacity-0 -translate-x-8'} ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}
+
+      <div id='Academics' className='w-full px-4 sm:px-6 md:px-8 xl:px-[12%] py-10 scroll-mt-20'>
+
+        {/* ── Title ── */}
+        <div
+          ref={titleRef}
+          className={`text-center transition-[opacity,transform] duration-700 ${titleInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
         >
-          <div className='flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 md:gap-6 lg:gap-8'>
-            {/* University Logo */}
-            <div className='flex-shrink-0'>
-              <Image src={assets.umass_logo} alt="UMass Boston" className='w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain'/>
-            </div>
-            
-            <div className='flex-1 w-full text-center sm:text-left'>
-              <h3 className={`text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6 ${isDark ? 'text-white' : 'text-gray-800'}`}>{schoolInfo.name}</h3>
-              
-              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6'>
-                <div className='space-y-1 sm:space-y-2'>
-                  <h4 className={`font-semibold text-xs sm:text-sm md:text-base ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>Degree Program</h4>
-                  <p className={`text-xs sm:text-sm md:text-base ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{schoolInfo.degree}</p>
-                 
+          <h4 className={`mb-2 text-base sm:text-lg font-Ovo ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>My Education</h4>
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-Ovo mb-14 sm:mb-20 ${isDark ? 'text-white' : 'text-gray-800'}`}>
+            Academic Background
+          </h2>
+        </div>
+
+        {/* ── Two-column layout ── */}
+        <div className='flex flex-col lg:flex-row gap-12 lg:gap-16 xl:gap-24'>
+
+          {/* ════ LEFT RAIL ════ */}
+          <aside className='lg:w-56 xl:w-64 flex-shrink-0'>
+            <div className='lg:sticky lg:top-28 space-y-6'>
+
+              {/* Logo + school */}
+              <div className='flex items-center gap-3 lg:block lg:space-y-3'>
+                <Image
+                  src={assets.umass_logo}
+                  alt="UMass Boston"
+                  className='w-10 h-10 lg:w-12 lg:h-12 object-contain'
+                />
+                <div>
+                  <h3 className={`text-sm font-semibold leading-snug font-Ovo ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    University of Massachusetts Boston
+                  </h3>
+                  <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                    B.S. Computer Science &middot; Honors
+                  </p>
                 </div>
-                
-                <div className='space-y-1 sm:space-y-2'>
-                  <h4 className={`font-semibold text-xs sm:text-sm md:text-base ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>Expected Graduation</h4>
-                  <p className={`text-xs sm:text-sm md:text-base ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{schoolInfo.expectedGraduation}</p>
+              </div>
+
+              {/* Key facts */}
+              <div className={`border-t pt-5 space-y-4 ${isDark ? 'border-gray-800' : 'border-gray-100'}`}>
+                <div>
+                  {label("Graduated")}
+                  <p className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>May 2026 &middot; Boston, MA</p>
                 </div>
-                
-                  <div className='space-y-1 sm:space-y-2'>
-                  <h4 className={`font-semibold text-xs sm:text-sm md:text-base ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>Cumulative GPA</h4>
-                  <a 
+                <div>
+                  {label("Cumulative GPA")}
+                  <a
                     href={getGoogleDriveDownloadLink(TRANSCRIPT_FILE_ID)}
-                    target="_blank" 
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className={`text-xs sm:text-sm md:text-base transition-all duration-300 cursor-pointer hover:scale-105 inline-flex items-center gap-2 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
+                    className='inline-flex items-center gap-1.5 group'
                   >
-                    <span className={`transition-all duration-300 inline-block transform scale-105 ${
-                      isDark 
-                        ? 'bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent animate-pulse' 
-                        : 'bg-gradient-to-r from-green-700 via-blue-700 to-blue-900 bg-clip-text text-transparent animate-pulse'
-                    }`}
-                    style={{
-                      backgroundSize: '200% 200%',
-                      animation: 'gradientShift 3s ease-in-out infinite'
-                    }}
-                    >3.962</span>/4.0
-                    <Image src={assets.download_icon} alt='Download Transcript' className='w-3 h-3 sm:w-4 sm:h-4 opacity-70 hover:opacity-100 transition-opacity duration-200'/>
+                    <span
+                      className={`text-sm font-semibold ${
+                        isDark
+                          ? 'bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent'
+                          : 'bg-gradient-to-r from-green-700 via-blue-600 to-blue-900 bg-clip-text text-transparent'
+                      }`}
+                      style={{ backgroundSize: '200% 200%', animation: 'gradientShift 3s ease-in-out infinite' }}
+                    >
+                      3.932
+                    </span>
+                    <span className={`text-sm ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>/4.0</span>
+                    <Image src={assets.download_icon} alt='Transcript' className='w-3 h-3 opacity-30 group-hover:opacity-70 transition-opacity duration-150' />
                   </a>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Section 2: Computer Science & Related Courses */}
-        <div 
-          ref={courseworkRef}
-          className={`rounded-lg sm:rounded-xl shadow-lg p-3 sm:p-4 md:p-6 lg:p-8 border transition-all duration-1000 delay-600 ${courseworkInView ? 'slideInRight' : 'opacity-0 translate-x-8'} ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}
-        >
-          <h3 className={`text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6 text-center ${isDark ? 'text-white' : 'text-gray-800'}`}>
-             Computer Science & Related Coursework
-          </h3>
-          
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4'>
-            {csCourses.map((course, index) => (
-              <div key={index} className={`rounded-lg p-2 sm:p-3 md:p-4 hover:shadow-md transition-shadow duration-200 ${isDark ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-50 hover:bg-gray-100'}`}>
-                <div className='flex justify-between items-start mb-1 sm:mb-2'>
-                  <h4 className={`font-semibold text-xs sm:text-sm ${isDark ? 'text-white' : 'text-gray-800'}`}>{course.code}</h4>
-                  <span className={`px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs font-medium ${getGradeColor(course.grade)}`}>
-                    {course.grade}
-                  </span>
-                </div>
-                <p className={`text-xs sm:text-sm mb-1 sm:mb-2 leading-tight ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{course.name}</p>
-                <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{course.credits} Credits</p>
-              </div>
-            ))}
-          </div>
-          
-          {/* Course Statistics */}
-          <div className={`mt-4 sm:mt-6 md:mt-8 grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 md:gap-4 pt-3 sm:pt-4 md:pt-6 border-t ${isDark ? 'border-gray-600' : 'border-gray-200'}`}>
-            <div className='text-center'>
-              <p className={`text-base sm:text-lg md:text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-800'}`}>{csCourses.length}</p>
-              <p className={`text-xs sm:text-sm ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Total Courses</p>
-            </div>
-            <div className='text-center'>
-              <p className={`text-base sm:text-lg md:text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-800'}`}>{csCourses.reduce((total, course) => total + course.credits, 0)}</p>
-              <p className={`text-xs sm:text-sm ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Total Credits</p>
-            </div>
-            <div className='text-center'>
-              <p className={`text-base sm:text-lg md:text-2xl font-bold ${isDark ? 'text-green-400' : 'text-green-600'}`}>{csCourses.filter(course => course.grade.includes('A')).length}</p>
-              <p className={`text-xs sm:text-sm ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>A Grades</p>
-            </div>
-            <div className='text-center'>
-              <p className={`text-base sm:text-lg md:text-2xl font-bold ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>{csCourses.filter(course => course.grade.includes('B')).length}</p>
-              <p className={`text-xs sm:text-sm ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>B Grades</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Section 3: Scholarships & Awards */}
-        <div className={`rounded-lg sm:rounded-xl shadow-lg p-3 sm:p-4 md:p-6 lg:p-8 border ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
-          <h3 className={`text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6 text-center ${isDark ? 'text-white' : 'text-gray-800'}`}>
-            Scholarships & Awards
-          </h3>
-          
-          {/* Scholarship Summary */}
-          <div className={`rounded-lg p-3 sm:p-4 md:p-6 border mb-4 sm:mb-6 md:mb-8 ${isDark ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-200'}`}>
-            <h4 className={`text-sm sm:text-base md:text-lg font-semibold mb-1 sm:mb-2 ${isDark ? 'text-white' : 'text-gray-800'}`}>Academic Excellence Recognition</h4>
-            <p className={`text-xs sm:text-sm md:text-base ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Recipient of 8+ prestigious scholarships across multiple academic years</p>
-          </div>
-
-          {/* Scholarship Years */}
-          <div className='space-y-4 sm:space-y-6 md:space-y-8'>
-            {/* 2023-2024 */}
-            <div>
-              <h4 className={`font-semibold mb-2 sm:mb-3 md:mb-4 text-sm sm:text-base md:text-lg border-b pb-1 sm:pb-2 ${isDark ? 'text-white border-gray-600' : 'text-gray-800 border-gray-200'}`}>2023-2024 Academic Year</h4>
-              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4'>
-                <div className={`rounded-lg p-2 sm:p-3 md:p-4 border hover:shadow-md transition-shadow duration-200 ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-gray-600' : 'bg-white border-gray-200 hover:bg-gray-50'}`}>
-                  <h5 className={`font-medium text-xs sm:text-sm md:text-base ${isDark ? 'text-white' : 'text-gray-800'}`}>Academic Recognition Award</h5>
-                  <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Merit-Based</p>
-                </div>
-                <div className={`rounded-lg p-2 sm:p-3 md:p-4 border hover:shadow-md transition-shadow duration-200 ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-gray-600' : 'bg-white border-gray-200 hover:bg-gray-50'}`}>
-                  <h5 className={`font-medium text-xs sm:text-sm md:text-base ${isDark ? 'text-white' : 'text-gray-800'}`}>The Teehan Scholarship</h5>
-                  <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Academic Excellence</p>
-                </div>
-                <div 
-                  ref={(el) => scholarshipRefs.current[0] = el}
-                  className={`rounded-lg p-2 sm:p-3 md:p-4 border transition-all duration-200 cursor-pointer ${
-                    activeScholarship === 0 
-                      ? (isDark ? 'bg-orange-900/20 border-orange-500' : 'bg-blue-50 border-blue-500') 
-                      : (isDark ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300')
-                  }`}
-                >
-                  <a href="https://ai.umb.edu/about-paul-english/" target="_blank" rel="noopener noreferrer" className='block'>
-                    <h5 className={`font-medium text-xs sm:text-sm md:text-base transition-colors duration-200 ${
-                      activeScholarship === 0 
-                        ? (isDark ? 'text-orange-400' : 'text-blue-600') 
-                        : (isDark ? 'text-white' : 'text-gray-800')
-                    }`}>The Paul English Scholarship</h5>
-                    <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 transition-colors duration-200 ${
-                      activeScholarship === 0 
-                        ? (isDark ? 'text-orange-300' : 'text-blue-500') 
-                        : (isDark ? 'text-gray-400' : 'text-gray-500')
-                    }`}>CSM Excellence Award</p>
-                  </a>
+                <div>
+                  {label("Honours")}
+                  <p className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>Dean's List &times; 5</p>
                 </div>
               </div>
-            </div>
 
-            {/* 2024-2025 */}
-            <div>
-              <h4 className={`font-semibold mb-2 sm:mb-3 md:mb-4 text-sm sm:text-base md:text-lg border-b pb-1 sm:pb-2 ${isDark ? 'text-white border-gray-600' : 'text-gray-800 border-gray-200'}`}>2024-2025 Academic Year</h4>
-              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4'>
-                <div className={`rounded-lg p-2 sm:p-3 md:p-4 border hover:shadow-md transition-shadow duration-200 ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-gray-600' : 'bg-white border-gray-200 hover:bg-gray-50'}`}>
-                  <h5 className={`font-medium text-xs sm:text-sm md:text-base ${isDark ? 'text-white' : 'text-gray-800'}`}>Donohue Scholarship</h5>
-                  <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Academic Merit</p>
-                </div>
-                <div 
-                  ref={(el) => scholarshipRefs.current[1] = el}
-                  className={`rounded-lg p-2 sm:p-3 md:p-4 border transition-all duration-200 cursor-pointer ${
-                    activeScholarship === 1 
-                      ? (isDark ? 'bg-orange-900/20 border-orange-500' : 'bg-blue-50 border-blue-500') 
-                      : (isDark ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300')
-                  }`}
-                >
-                  <a href="https://ai.umb.edu/about-paul-english/" target="_blank" rel="noopener noreferrer" className='block'>
-                    <h5 className={`font-medium text-xs sm:text-sm md:text-base transition-colors duration-200 ${
-                      activeScholarship === 1 
-                        ? (isDark ? 'text-orange-400' : 'text-blue-600') 
-                        : (isDark ? 'text-white' : 'text-gray-800')
-                    }`}>The Paul English Scholarship</h5>
-                    <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 transition-colors duration-200 ${
-                      activeScholarship === 1 
-                        ? (isDark ? 'text-orange-300' : 'text-blue-500') 
-                        : (isDark ? 'text-gray-400' : 'text-gray-500')
-                    }`}>CSM Excellence Award</p>
-                  </a>
-                </div>
-                <div className={`rounded-lg p-2 sm:p-3 md:p-4 border hover:shadow-md transition-shadow duration-200 ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-gray-600' : 'bg-white border-gray-200 hover:bg-gray-50'}`}>
-                  <h5 className={`font-medium text-xs sm:text-sm md:text-base ${isDark ? 'text-white' : 'text-gray-800'}`}>National Grid Scholarship</h5>
-                  <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>STEM Excellence</p>
-                </div>
-                <div className={`rounded-lg p-2 sm:p-3 md:p-4 border hover:shadow-md transition-shadow duration-200 ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-gray-600' : 'bg-white border-gray-200 hover:bg-gray-50'}`}>
-                  <h5 className={`font-medium text-xs sm:text-sm md:text-base ${isDark ? 'text-white' : 'text-gray-800'}`}>Janus Scholarship</h5>
-                  <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Academic Achievement</p>
-                </div>
+              {/* Stats */}
+              <div className={`border-t pt-5 grid grid-cols-2 gap-x-4 gap-y-5 ${isDark ? 'border-gray-800' : 'border-gray-100'}`}>
+                {[
+                  { value: allCourses.length, label: 'Courses',  color: isDark ? 'text-white' : 'text-gray-800' },
+                  { value: 58,                label: 'Credits',  color: isDark ? 'text-white' : 'text-gray-800' },
+                  { value: aCount,            label: 'A Grades', color: isDark ? 'text-emerald-400' : 'text-emerald-600' },
+                  { value: bCount,            label: 'B Grades', color: isDark ? 'text-sky-400' : 'text-sky-600' },
+                ].map(({ value, label: lbl, color }) => (
+                  <div key={lbl}>
+                    <p className={`text-2xl font-bold font-Ovo ${color}`}>{value}</p>
+                    <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-400'}`}>{lbl}</p>
+                  </div>
+                ))}
               </div>
+
+            </div>
+          </aside>
+
+          {/* ════ RIGHT: Courses + Awards ════ */}
+          <div
+            ref={rightRef}
+            className={`flex-1 min-w-0 transition-[opacity,transform] duration-700 delay-200 ${rightInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+          >
+
+            {/* ── Coursework ── */}
+            <p className={`text-[10px] uppercase tracking-[0.15em] mb-8 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+              Relevant Coursework
+            </p>
+
+            <div className='space-y-8'>
+              {courseCategories.map((category) => (
+                <div key={category.label}>
+                  <p className={`text-[10px] uppercase tracking-[0.15em] mb-3 ${isDark ? 'text-gray-400' : 'text-gray-400'}`}>
+                    {category.label}
+                  </p>
+                  <div>
+                    {category.courses.map((course, i) => (
+                      <div
+                        key={course.code}
+                        className={`flex items-center gap-4 py-2.5 border-b ${rowBorder} ${
+                          i === 0 ? `border-t ${rowBorder}` : ''
+                        }`}
+                      >
+                        <span className={`font-mono text-xs w-20 flex-shrink-0 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                          {course.code}
+                        </span>
+                        <span className={`flex-1 text-sm min-w-0 truncate ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                          {course.name}
+                        </span>
+                        <span className={`flex-shrink-0 text-xs font-semibold tabular-nums ${gradeBadge(course.grade)}`}>
+                          {course.grade}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
 
-            {/* 2025-2026 */}
-            <div>
-              <h4 className={`font-semibold mb-2 sm:mb-3 md:mb-4 text-sm sm:text-base md:text-lg border-b pb-1 sm:pb-2 ${isDark ? 'text-white border-gray-600' : 'text-gray-800 border-gray-200'}`}>2025-2026 Academic Year</h4>
-              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4'>
-                <div className={`rounded-lg p-2 sm:p-3 md:p-4 border hover:shadow-md transition-shadow duration-200 ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-gray-600' : 'bg-white border-gray-200 hover:bg-gray-50'}`}>
-                  <h5 className={`font-medium text-xs sm:text-sm md:text-base ${isDark ? 'text-white' : 'text-gray-800'}`}>Donohue Scholarship</h5>
-                  <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Continued Excellence</p>
-                </div>
-                <div 
-                  ref={(el) => scholarshipRefs.current[2] = el}
-                  className={`rounded-lg p-2 sm:p-3 md:p-4 border transition-all duration-200 cursor-pointer ${
-                    activeScholarship === 2 
-                      ? (isDark ? 'bg-orange-900/20 border-orange-500' : 'bg-blue-50 border-blue-500') 
-                      : (isDark ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300')
-                  }`}
-                >
-                  <a href="https://ai.umb.edu/about-paul-english/" target="_blank" rel="noopener noreferrer" className='block'>
-                    <h5 className={`font-medium text-xs sm:text-sm md:text-base transition-colors duration-200 ${
-                      activeScholarship === 2 
-                        ? (isDark ? 'text-orange-400' : 'text-blue-600') 
-                        : (isDark ? 'text-white' : 'text-gray-800')
-                    }`}>The Paul English Scholarship</h5>
-                    <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 transition-colors duration-200 ${
-                      activeScholarship === 2 
-                        ? (isDark ? 'text-orange-300' : 'text-blue-500') 
-                        : (isDark ? 'text-gray-400' : 'text-gray-500')
-                    }`}>CSM Excellence Award (3rd Time)</p>
-                  </a>
-                </div>
-                <div className={`rounded-lg p-2 sm:p-3 md:p-4 border hover:shadow-md transition-shadow duration-200 ${isDark ? 'bg-gray-700 border-gray-600 hover:bg-gray-600' : 'bg-white border-gray-200 hover:bg-gray-50'}`}>
-                  <h5 className={`font-medium text-xs sm:text-sm md:text-base ${isDark ? 'text-white' : 'text-gray-800'}`}>Janus Scholarship</h5>
-                  <p className={`text-xs sm:text-sm mt-0.5 sm:mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Continued Recognition</p>
-                </div>
-              </div>
-            </div>
-          </div>
+            {/* ── Divider ── */}
+            <div className={`border-t my-12 ${isDark ? 'border-gray-800' : 'border-gray-100'}`} />
 
-          {/* Special Recognition */}
-          <div className={`mt-4 sm:mt-6 md:mt-8 pt-3 sm:pt-4 md:pt-6 border-t ${isDark ? 'border-gray-600' : 'border-gray-200'}`}>
-            <div 
-              ref={(el) => scholarshipRefs.current[3] = el}
-              className={`rounded-lg p-3 sm:p-4 md:p-6 border transition-all duration-300 cursor-pointer transform perspective-1000 ${
-                activeScholarship === 3 
-                  ? (isDark 
-                      ? 'bg-orange-900/30 border-orange-400 shadow-lg shadow-orange-500/10 scale-[1.015] rotate-x-1' 
-                      : 'bg-blue-50 border-blue-400 shadow-lg shadow-blue-500/10 scale-[1.015] rotate-x-1'
-                    ) 
-                  : (isDark ? 'bg-gray-700 border-gray-600 hover:shadow-lg' : 'bg-gray-50 border-gray-200 hover:shadow-lg')
+            {/* ── Scholarships ── */}
+            <div className='flex items-baseline justify-between mb-8'>
+              <p className={`text-[10px] uppercase tracking-[0.15em] ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                Scholarships & Awards
+              </p>
+              <span className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-400'}`}>8+ awards</span>
+            </div>
+
+            <div className='space-y-10'>
+              {scholarshipYears.map((yearGroup) => (
+                <div key={yearGroup.year}>
+                  <p className={`text-[10px] uppercase tracking-[0.15em] mb-3 ${isDark ? 'text-gray-400' : 'text-gray-400'}`}>
+                    {yearGroup.year}
+                  </p>
+                  <div>
+                    {yearGroup.awards.map((award, i) => {
+                      const isActive = award.refIndex !== undefined && activeScholarship === award.refIndex;
+                      const row = (
+                        <div
+                          className={`flex items-center gap-4 py-2.5 border-b transition-colors duration-150 ${rowBorder} ${
+                            i === 0 ? `border-t ${rowBorder}` : ''
+                          }`}
+                        >
+                          <span className={`flex-1 text-sm transition-colors duration-150 ${
+                            isActive
+                              ? (isDark ? 'text-orange-400' : 'text-blue-600')
+                              : (isDark ? 'text-gray-300' : 'text-gray-700')
+                          }`}>
+                            {award.name}
+                          </span>
+                          <span className={`text-xs flex-shrink-0 transition-colors duration-150 ${
+                            isActive
+                              ? (isDark ? 'text-orange-400/70' : 'text-blue-400')
+                              : (isDark ? 'text-gray-400' : 'text-gray-400')
+                          }`}>
+                            {award.type}
+                          </span>
+                          {award.link && (
+                            <span className={`text-xs flex-shrink-0 transition-colors duration-150 ${
+                              isActive
+                                ? (isDark ? 'text-orange-400' : 'text-blue-500')
+                                : (isDark ? 'text-gray-400' : 'text-gray-300')
+                            }`}>↗</span>
+                          )}
+                        </div>
+                      );
+                      return (
+                        <div
+                          key={i}
+                          ref={award.refIndex !== undefined ? (el) => { scholarshipRefs.current[award.refIndex] = el } : undefined}
+                        >
+                          {award.link
+                            ? <a href={award.link} target="_blank" rel="noopener noreferrer">{row}</a>
+                            : row
+                          }
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* ── Paul English callout ── */}
+            <div
+              ref={(el) => { scholarshipRefs.current[3] = el }}
+              className={`mt-10 pl-4 border-l-2 transition-colors duration-150 ${
+                activeScholarship === 3
+                  ? (isDark ? 'border-orange-500' : 'border-blue-400')
+                  : (isDark ? 'border-gray-800' : 'border-gray-100')
               }`}
-              style={{
-                transformStyle: 'preserve-3d',
-                boxShadow: activeScholarship === 3 
-                  ? `0 6px 12px ${isDark ? 'rgba(251, 146, 60, 0.09)' : 'rgba(59, 130, 246, 0.09)'}, 0 3px 6px rgba(0, 0, 0, 0.03)` 
-                  : undefined
-              }}
             >
-              <a href="https://ai.umb.edu/about-paul-english/" target="_blank" rel="noopener noreferrer" className='block'>
-                <h4 className={`font-semibold mb-1 sm:mb-2 text-xs sm:text-sm md:text-base transition-all duration-300 ${
-                  activeScholarship === 3 
-                    ? (isDark ? 'text-orange-300 transform translate-z-2' : 'text-blue-600 transform translate-z-2') 
-                    : (isDark ? 'text-white' : 'text-gray-800')
-                }`}>Special Recognition</h4>
-                <p className={`text-xs sm:text-sm leading-tight transition-all duration-300 ${
-                  activeScholarship === 3 
-                    ? (isDark ? 'text-orange-200 transform translate-z-1' : 'text-blue-500 transform translate-z-1') 
+              <a href="https://ai.umb.edu/about-paul-english/" target="_blank" rel="noopener noreferrer">
+                <p className={`text-[10px] uppercase tracking-[0.15em] mb-1.5 ${isDark ? 'text-gray-400' : 'text-gray-400'}`}>
+                  Special Recognition
+                </p>
+                <p className={`text-sm leading-relaxed transition-colors duration-150 ${
+                  activeScholarship === 3
+                    ? (isDark ? 'text-orange-300' : 'text-blue-600')
                     : (isDark ? 'text-gray-300' : 'text-gray-600')
                 }`}>
-                  Three-time recipient of <span className='font-medium'>The Paul English Scholarship</span> - 
-                  a prestigious award recognizing exceptional achievement in Computer Science
+                  Three-time recipient of{' '}
+                  <span className={`font-medium ${isDark ? 'text-gray-300' : 'text-gray-800'}`}>The Paul English Scholarship</span>
+                  {' '}— recognizing exceptional achievement in Computer Science at UMass Boston.
                 </p>
               </a>
             </div>
+
           </div>
         </div>
-
       </div>
-    </div>
     </>
   )
 }

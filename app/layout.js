@@ -58,7 +58,7 @@ export default function RootLayout({ children }) {
       >
         <ThemeProvider>
           <BackgroundBeamsWithCollision />
-          <div className="min-h-screen transition-colors duration-300 relative z-10">
+          <div className="min-h-screen relative z-10">
             {children}
           </div>
         </ThemeProvider>

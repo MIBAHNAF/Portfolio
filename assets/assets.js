@@ -68,6 +68,7 @@ import A from './A.png';
 import Sec from './Sec.png';
 import web from './web.png';
 import poster from './poster.png';
+import comptia from './comptia-security-ce-certification.png';
 
 export const assets = {
     user_image,
@@ -140,6 +141,7 @@ export const assets = {
     Sec,
     web,
     poster,
+    comptia,
 };
 
 export const workData = [
@@ -173,9 +175,9 @@ export const serviceData = [
 ]
 
 export const infoList = [
-    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'Python, JavaScript, Java, SQL, VBA, C' },
-    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'Computer Science,BS UMass Boston ' },
-    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: '8 + Real World Projects' }
+    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'Computer Science, BS UMass Boston' },
+    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: '8+ Real World Projects' },
+    { icon: assets.comptia, iconDark: assets.comptia, title: 'Certifications', description: '3+ Certifications' },
 ];
 
 
@@ -206,27 +208,31 @@ export const frameworkData = [
 
 export const projectsData = [
   {
+    name: 'Mini-SOC Home Lab',
+    type: 'Personal Project',
+    hours: 40,
+    languages: ['wazuh', 'linux', 'vmware'],
+    carouselIndex: 0,
+  },
+  {
+    name: 'Attendly',
+    type: 'Personal Project',
+    hours: 50,
+    languages: ['next', 'react', 'firebase'],
+    carouselIndex: 1,
+  },
+  {
     name: 'NFC Apple Pay Attendance System',
     type: 'Course Project',
     hours: 30,
     languages: ['python', 'cpp'],
-  },
-  {
-    name: 'Automated Attendance SMS System',
-    type: 'Client Project',
-    hours: 60,
-    languages: ['ts', 'js', 'css'],
+    carouselIndex: 2,
   },
   {
     name: 'Movie Recommendation App',
     type: 'Personal Project',
     hours: 30,
     languages: ['python'],
-  },
-  {
-    name: 'Hallucinations - Horror Game',
-    type: 'Game Development',
-    hours: 80,
-    languages: ['unity', 'csharp'],
+    carouselIndex: 4,
   },
 ];
