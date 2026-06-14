@@ -112,9 +112,7 @@ function About() {
 
         <div ref={descRef} className={`flex-1 w-full ${slideInRight} ${descVisible ? slideInRightVisible : slideInRightHidden}`}>
           <p className={`mb-6 sm:mb-8 lg:mb-10 max-w-2xl font-Ovo text-sm sm:text-base ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-            I'm Mir Ahnaf Ali, a CS graduate from UMass Boston (3.93 GPA) pursuing Cybersecurity / Security Analyst roles.
-            I have 2+ years of experience as an IT Support Analyst, hold CompTIA Security+,
-            and build secure full-stack apps like Attendly—an NFC check-in platform designed around authentication, authorized devices, and clean data handling.
+            I'm Mir Ahnaf Ali, a Computer Science graduate from UMass Boston (3.93 GPA) pursuing Cybersecurity / Security Analyst roles. I have 2+ years of IT Support Analyst experience and hold CompTIA Security+. My projects include a Wazuh Mini-SOC for alert triage, log analysis, and MITRE ATT&CK-mapped detections, plus an NFC and Apple Pay-compatible attendance prototype built with Arduino, PN532, Python, and Excel. I'm seeking entry-level opportunities in Boston/Greater MA to protect systems, reduce risk, and deliver reliable solutions.
           </p>
 
           <div ref={infoRef} className={`${fadeInUp} ${infoVisible ? fadeInUpVisible : fadeInUpHidden}`}>
