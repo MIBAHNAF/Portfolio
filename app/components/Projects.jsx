@@ -202,13 +202,13 @@ function Projects() {
       ),
     },
     {
-      category: "Course Project",
+      category: "Honors Thesis Project",
       title: "NFC Apple Pay Attendance System",
       src: "/nfc-1.png",
       content: (
         <div>
           <p className="text-gray-800 dark:text-neutral-400 text-sm sm:text-base md:text-lg font-sans mb-6 sm:mb-8">
-            Built a cross-platform NFC attendance system with dual USB/BLE transport, EMV card parsing, and Excel automation using Python, Arduino, and Tkinter. (~30 hours development time)
+            Developed as my undergraduate honors thesis, this cross-platform NFC attendance system supports dual USB/BLE transport, EMV card parsing for Apple Pay compatibility, duplicate prevention, and automated Excel reporting using Python, Arduino, PN532, and Tkinter.
           </p>
           
           <div className="mb-6 sm:mb-8">
@@ -250,7 +250,7 @@ function Projects() {
             />
           </div>
 
-          <div className="flex gap-3 sm:gap-4">
+          <div className="flex flex-wrap gap-3 sm:gap-4">
             <a 
               href="https://github.com/MIBAHNAF/NFC-Attendance" 
               target="_blank" 
@@ -262,6 +262,18 @@ function Projects() {
               </svg>
               <span className="hidden sm:inline"> GitHub</span>
               <span className="sm:hidden">GitHub</span>
+            </a>
+            <a
+              href="https://github.com/MIBAHNAF/NFC-Attendance/blob/main/Evidence/Papers/HONORS%20Thesis%20Paper.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-blue-600 dark:bg-blue-700 text-white font-medium rounded-lg hover:bg-blue-700 dark:hover:bg-blue-800 hover:scale-105 hover:shadow-md transition-[transform,box-shadow] duration-300 text-sm sm:text-base"
+            >
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M7 3h7l5 5v13H7V3Z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M14 3v5h5M10 13h6M10 17h6" />
+              </svg>
+              Thesis Paper
             </a>
           </div>
         </div>
@@ -563,7 +575,22 @@ function Projects() {
     },
   ];
 
-  const cards = projects.map((card, index) => (
+  const featuredProjectOrder = [
+    "Mini-SOC Home Lab",
+    "NFC Apple Pay Attendance System",
+    "Attendly",
+  ];
+
+  const orderedProjects = [...projects].sort((a, b) => {
+    const aIndex = featuredProjectOrder.indexOf(a.title);
+    const bIndex = featuredProjectOrder.indexOf(b.title);
+    const aOrder = aIndex === -1 ? featuredProjectOrder.length : aIndex;
+    const bOrder = bIndex === -1 ? featuredProjectOrder.length : bIndex;
+
+    return aOrder - bOrder;
+  });
+
+  const cards = orderedProjects.map((card, index) => (
     <Card key={card.src} card={card} index={index} />
   ));
 

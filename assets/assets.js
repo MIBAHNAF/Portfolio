@@ -219,14 +219,14 @@ export const projectsData = [
     type: 'Personal Project',
     hours: 50,
     languages: ['next', 'react', 'firebase'],
-    carouselIndex: 1,
+    carouselIndex: 2,
   },
   {
     name: 'NFC Apple Pay Attendance System',
-    type: 'Course Project',
+    type: 'Honors Thesis Project',
     hours: 30,
     languages: ['python', 'cpp'],
-    carouselIndex: 2,
+    carouselIndex: 1,
   },
   {
     name: 'Movie Recommendation App',
