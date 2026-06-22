@@ -4,6 +4,10 @@ export const metadata = {
   title: 'Professional - Mir Ahnaf Ali | IT Systems and Security Analyst',
   description: 'Professional profile photos of Mir Ahnaf Ali - IT Systems and Security Analyst and Computer Science student at UMass Boston. View my GitHub projects and portfolio gallery.',
   keywords: 'Mir Ahnaf Ali, Professional Photos, GitHub, Software Engineer, Portfolio Images, UMass Boston, Developer Profile',
+  robots: {
+    index: false,
+    follow: true,
+  },
 }
 
 export default function ProfessionalPage() {

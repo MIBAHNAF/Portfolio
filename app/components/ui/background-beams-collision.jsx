@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "../../../lib/utils";
 import { motion } from "motion/react";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTheme } from "../../contexts/ThemeContext";
 
 export const BackgroundBeamsWithCollision = ({
@@ -9,6 +9,15 @@ export const BackgroundBeamsWithCollision = ({
   className
 }) => {
   const { isDark } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   // Random optimized beams - responsive count based on screen size
   const beams = [

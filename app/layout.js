@@ -15,15 +15,19 @@ const ovo = Ovo({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://www.mirahnaf-ali.com"),
   title: "Mir Ahnaf Ali - IT Systems and Security Analyst",
-  description: "Mir Ahnaf Ali - Computer Science student at UMass Boston specializing in Cybersecurity, Full-Stack Development, Systems Administration, and Software Engineering. Explore my projects and GitHub repositories.",
+  description: "Mir Ahnaf Ali is a UMass Boston Computer Science graduate pursuing Cybersecurity and Security Analyst roles, with IT support experience, CompTIA Security+, and hands-on Wazuh Mini-SOC and full-stack projects.",
   keywords: "Mir Ahnaf Ali, IT Systems and Security Analyst, Security Analyst, Cybersecurity, Systems Administration, Computer Science, UMass Boston, GitHub, Projects, Python, React, Next.js, Full-Stack Development",
   author: "Mir Ahnaf Ali",
+  alternates: {
+    canonical: "/",
+  },
   
   openGraph: {
     title: "Mir Ahnaf Ali - IT Systems and Security Analyst",
-    description: "Computer Science student at UMass Boston specializing in Cybersecurity, Full-Stack Development, Systems Administration, and Software Engineering. Check out my GitHub projects and portfolio.",
-    url: "https://mirahnaf-ali.com",
+    description: "UMass Boston Computer Science graduate pursuing Cybersecurity and Security Analyst roles, with IT support experience, CompTIA Security+, and hands-on security and full-stack projects.",
+    url: "https://www.mirahnaf-ali.com",
     siteName: "Mir Ahnaf Ali Portfolio",
     locale: "en_US",
     type: "website",

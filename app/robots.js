@@ -3,10 +3,10 @@ export default function robots() {
     rules: [
       {
         userAgent: '*',
-        allow: ['/user-image.png', '/user-image1.png'],
-        disallow: ['/private/', '/data', '/images', '/professional'],
+        allow: '/',
+        disallow: ['/private/'],
       }
     ],
-    sitemap: 'https://mirahnaf-ali.com/sitemap.xml',
+    sitemap: 'https://www.mirahnaf-ali.com/sitemap.xml',
   }
 }

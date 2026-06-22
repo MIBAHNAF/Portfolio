@@ -4,6 +4,10 @@ export const metadata = {
   title: 'Data & Links - Mir Ahnaf Ali | GitHub & Project Information',
   description: 'Quick access to Mir Ahnaf Ali\'s GitHub repositories, project links, and basic information. IT Systems and Security Analyst and Computer Science student at UMass Boston.',
   keywords: 'Mir Ahnaf Ali, GitHub, Projects, Data, Links, Software Engineer, Computer Science, UMass Boston',
+  robots: {
+    index: false,
+    follow: true,
+  },
 }
 
 export default function DataPage() {
@@ -13,7 +17,7 @@ export default function DataPage() {
     university: "UMass Boston",
     major: "Computer Science",
     github: "https://github.com/MIBAHNAF",
-    website: "https://mirahnaf-ali.com",
+    website: "https://www.mirahnaf-ali.com",
     location: "Boston, MA"
   }
 
