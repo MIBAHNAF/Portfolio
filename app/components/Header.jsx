@@ -18,7 +18,7 @@ function Header() {
 
   // Typewriter words array
   const titleWords = [
-    "IT Systems Specialist",
+    "IT Specialist",
     "Security Analyst",
     "Cloud Analyst",
     "Oracle Research Fellow",

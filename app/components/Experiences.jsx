@@ -7,6 +7,20 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 // Experience data
 const experiences = [
   {
+    period: 'Jul 2026 - Present',
+    role: 'IT Support Analyst',
+    company: 'Beth Israel Lahey Health (Contract)',
+    location: 'Boston, MA',
+    points: [
+      'Resolve 30+ incidents and service requests daily through ServiceNow and AWS Connect across BILH\'s 14-hospital network and 60,000+ account environment, supporting clinical, executive, and administrative users.',
+      'Perform 10+ secure password resets and account recoveries daily using Active Directory, Microsoft Entra ID, IDM/ID.me, Duo, MFA, and SSPR while enforcing identity-verification and HIPAA security procedures.',
+      'Use Delinea Secret Server for privileged administrative access, leveraging vaulted, automatically rotated credentials to reduce standing privilege and limit exposure from compromised accounts.',
+      'Improved ticket-queue throughput and resolution efficiency by 20% through targeted KB research, historical ticket analysis, accurate prioritization, detailed documentation, and routing to correct resolver teams.',
+      'Troubleshoot Windows, Microsoft 365, Citrix Workspace, GlobalProtect VPN, RDP, Ivanti MDM, Epic, Dragon Medical One, Rover, Haiku, and Passkey/PassPIN, prioritizing time-sensitive clinical workflows.',
+      'Support network printing with LRS VPSX, Personal Print Manager, and FlexTG; standardized shared-drive mapping to reduce resolution time by 10% through path, permission, VPN, and DNS validation.',
+    ],
+  },
+  {
     period: 'Jun 2024 - Jun 2026',
     role: 'IT Support Analyst',
     company: 'UMass Boston',
