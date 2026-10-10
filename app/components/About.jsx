@@ -21,7 +21,7 @@ const skillsData = [
   {
     label: 'SIEM & Detection',
     Icon: BsShieldFillCheck,
-    skills: ['Wazuh SIEM', 'Splunk', 'EDR', 'MITRE ATT&CK Mapping', 'Windows Security Events', 'Linux Security Events', 'Detection Rules']
+    skills: ['Wazuh SIEM', 'Splunk', 'Rapid7', 'EDR', 'MITRE ATT&CK Mapping', 'Windows Security Events', 'Linux Security Events', 'Detection Rules']
   },
   {
     label: 'Healthcare IT',
