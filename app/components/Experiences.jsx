@@ -8,39 +8,17 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation'
 const experiences = [
   {
     period: 'Jul 2026 - Present',
-    role: 'IT Support Analyst',
-    company: 'Beth Israel Lahey Health (Contract)',
+    role: 'IT Analyst Tier 1',
+    company: 'Beth Israel Lahey Health',
     location: 'Boston, MA',
     points: [
-      'Resolve 30+ incidents and service requests daily through ServiceNow and AWS Connect across BILH\'s 14-hospital network and 60,000+ account environment, supporting clinical, executive, and administrative users.',
-      'Perform 10+ secure password resets and account recoveries daily using Active Directory, Microsoft Entra ID, IDM/ID.me, Duo, MFA, and SSPR while enforcing identity-verification and HIPAA security procedures.',
-      'Use Delinea Secret Server for privileged administrative access, leveraging vaulted, automatically rotated credentials to reduce standing privilege and limit exposure from compromised accounts.',
-      'Improved ticket-queue throughput and resolution efficiency by 20% through targeted KB research, historical ticket analysis, accurate prioritization, detailed documentation, and routing to correct resolver teams.',
-      'Troubleshoot Windows, Microsoft 365, Citrix Workspace, GlobalProtect VPN, RDP, Ivanti MDM, Epic, Dragon Medical One, Rover, Haiku, and Passkey/PassPIN, prioritizing time-sensitive clinical workflows.',
-      'Support network printing with LRS VPSX, Personal Print Manager, and FlexTG; standardized shared-drive mapping to reduce resolution time by 10% through path, permission, VPN, and DNS validation.',
-    ],
-  },
-  {
-    period: 'Jun 2024 - Jun 2026',
-    role: 'IT Support Analyst',
-    company: 'UMass Boston',
-    location: 'Boston, MA',
-    points: [
-      'Supported 100+ users across 2+ years in a ticket-driven environment, resolving 50+ technical and access issues monthly on Windows, macOS, and remote-access systems.',
-      'Managed identity and access workflows in Active Directory and Azure AD, completing 15+ password resets and 10+ account reviews weekly to maintain secure access and policy compliance.',
-      'Closed 100+ ServiceNow tickets and improved resolution speed by 20% through repeatable remediation steps, clearer documentation, and organized workflow management.',
-      'Resolved 30+ Wi-Fi and VPN issues each month, restoring secure connectivity and reducing downtime for end users.',
-      'Supported MFA/SSO troubleshooting and onboarding access requests, resolving 20+ access issues while reinforcing least-privilege and secure account setup practices.',
-      'Assisted with phishing-related support and security concerns by documenting reports in Wazuh SIEM, guiding users through safe practices, and escalating higher-risk cases — reducing incident response time and protecting user accounts.',
+      'Resolve 30+ daily Tier 1 incidents and service requests through ServiceNow and Amazon Connect across BILH\'s 14-hospital network and 60,000+ account environment; improved ticket throughput and resolution efficiency by 20% through targeted research, prioritization, and accurate routing.',
+      'Troubleshoot recurring account lockouts and suspected scareware by reviewing Microsoft Entra ID logs and Rapid7 findings; independently resolve issues within Tier 1 scope, document and report security concerns, and improve resolution speed by 15%.',
+      'Investigated suspended BitLocker protection after Dell BIOS updates and GlobalProtect VPN dependencies with Desktop Engineering and Cybersecurity; proposed VPN-free App Portal access to the BitLocker resume tool, creating a one-click Tier 1 workflow that eliminated routine Cybersecurity exemption requests and hours of delay.',
+      'Perform 10+ daily password resets and account recoveries within Tier 1 scope using Active Directory, Microsoft Entra ID, IDM, Duo, MFA, and SSPR, enforcing identity-verification and HIPAA security procedures; access administrative systems through Delinea Secret Server using vaulted, automatically rotated credentials.',
+      'Provide Tier 1 troubleshooting for Windows endpoints, remote access, and clinical applications involving Microsoft 365, Citrix, RDP, Ivanti MDM, and Epic; standardized shared-drive diagnostics through permission, VPN, DNS, and path validation, reducing resolution time by 10%.',
     ],
     certificates: [
-      {
-        name: 'IT Support Specialist',
-        issuer: 'UMass Boston',
-        description: 'Certified for COMPTIA A+ level Technical Support',
-        period: 'June 2025',
-        image: 'A'
-      },
       {
         name: 'COMPTIA Security + Plus Series',
         issuer: 'COMPTIA',
@@ -51,16 +29,36 @@ const experiences = [
     ]
   },
   {
+    period: 'Jun 2024 - Jun 2026',
+    role: 'IT Service Desk Analyst',
+    company: 'UMass Boston',
+    location: 'Boston, MA',
+    points: [
+      'Supported 100+ users across 2+ years in a ticket-driven environment, resolving 50+ technical, account-access, and endpoint issues monthly across Windows, macOS, and remote-access systems.',
+      'Managed identity and access workflows in Active Directory and Microsoft Entra ID, completing 15+ password resets and 10+ account reviews weekly to maintain secure access and policy compliance.',
+      'Investigated phishing-related reports and security concerns by documenting relevant details in ServiceNow, guiding users through safe account practices, and escalating higher-risk cases to the appropriate teams.',
+      'Resolved 30+ Wi-Fi and VPN issues plus 20+ MFA, SSO, and onboarding-access requests monthly, restoring secure connectivity while reinforcing least-privilege account setup.',
+      'Closed 100+ ServiceNow tickets and improved resolution speed by 20% through repeatable remediation steps, clearer incident documentation, and organized escalation workflows.',
+    ],
+    certificates: [
+      {
+        name: 'IT Support Specialist',
+        issuer: 'UMass Boston',
+        description: 'Certified for COMPTIA A+ level Technical Support',
+        period: 'June 2025',
+        image: 'A'
+      }
+    ]
+  },
+  {
     period: 'Sep 2023 - May 2024',
-    role: 'Software Engineering Research Fellow',
+    role: 'SWE Research Fellow',
     company: 'Oracle',
     location: 'Boston, MA',
     points: [
-      'Built a Python-based analysis workflow to evaluate complex data across multiple parameter sets, producing structured outputs for technical review and presentation.',
-      'Generated 3+ publication-quality figures and organized findings into clear deliverables for a formal research poster.',
-      'Automated Excel-based data aggregation and summary reporting, reducing manual analysis time by 30%+ and improving reporting consistency.',
-      'Collaborated in 10+ weekly meetings with faculty to review results, refine methods, and align technical deliverables with research goals.',
-      'Presented findings at the CSM Student Success Showcase, communicating technical results to a broader audience.',
+      'Built a Python-based analysis workflow across multiple parameter sets, producing structured outputs and 3+ publication-quality figures for technical review and presentation.',
+      'Automated Excel data aggregation and summary reporting, reducing manual analysis time by 30% while improving consistency and reproducibility.',
+      'Collaborated with faculty through 10+ project meetings to refine methods, then presented the findings to technical and nontechnical audiences at the CSM Student Success Showcase.',
     ],
     certificates: [
       {
